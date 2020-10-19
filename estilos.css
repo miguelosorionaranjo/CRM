@@ -73,6 +73,10 @@ h1{
   .ventanas {
     width: 100%;
   }
-  .btn-success{
+  .btn-success-activa{
     width: 100%;
+    background-color: rgba(11, 109, 11, 0.863);
+    color:white;
   }
+
+  

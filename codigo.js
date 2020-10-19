@@ -124,7 +124,7 @@ $(document).ready(function() {
                   ${task.recorrido}
                   </td>
                   <td>
-                    <button class="task-activa btn btn-success ">
+                    <button class="task-activa btn btn-success-activa ">
                     ${task.activa}
                     </button>
                   </td>
