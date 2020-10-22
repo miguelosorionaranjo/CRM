@@ -23,6 +23,7 @@ $(document).ready(function() {
   // Testing Jquery
   console.log('jquery is working!');
   fetchTasks();
+  fetchAprobado();
   $('#task-result').hide();
   // Buscador
   $('#search').keyup(function() {
@@ -71,6 +72,7 @@ $(document).ready(function() {
       cc: $('#cc').val(),
       origen: $('#origen').val(),
       recorrido: $('#recorrido').val(),
+      fecha: $('#fecha').val(),
       activa: $('#activa').val(),
       id: $('#taskId').val()
     };
@@ -80,6 +82,7 @@ $(document).ready(function() {
       console.log(response);
       $('#task-form').trigger('reset');
       fetchTasks();
+      fetchAprobado();
     });
   });
   // Fetching Tasks
@@ -122,6 +125,9 @@ $(document).ready(function() {
                   </td>
                   <td >
                   ${task.recorrido}
+                  </td>
+                  <td >
+                  ${task.fecha}
                   </td>
                   <td>
                     <button class="task-activa btn btn-success-activa ">
@@ -180,5 +186,66 @@ $(document).ready(function() {
       });
     }
   });
-
+  // Consulta de Aprobados
+  function fetchAprobado() {
+   $.ajax({
+     url: 'task-aprobado.php',
+     type: 'GET',
+     success: function(response) {
+       const aprobado = JSON.parse(response);
+       let template = '';
+       aprobado.forEach(task => {
+         template += `
+                 <tr >
+                 <td>${task.id}</td>
+                 <td  >
+                 ${task.fuec}
+                 </td>
+                 <td>
+                 <a href="#" class="task-item">
+                   ${task.name} 
+                 </a>
+                 </td>
+                 <td>
+                 <a href="#" class="task-item">
+                   ${task.apellido} 
+                 </a>
+                 </td>
+                 <td>${task.description}</td>
+                 <td  >
+                 ${task.contratante}
+                 </td>
+                 <td  >
+                 ${task.objetocontrato}
+                 </td>
+                 <td  >
+                 ${task.cc}
+                 </td>
+                 <td   >
+                 ${task.origen}
+                 </td>
+                 <td >
+                 ${task.recorrido}
+                 </td>
+                 <td >
+                  ${task.fecha}
+                  </td>
+                 <td>
+                   <button class="task-activa btn btn-success-activa ">
+                   ${task.activa}
+                   </button>
+                 </td>
+                 <td>
+                   <button class="task-delete btn btn-danger">
+                    Eliminar 
+                   </button>
+                 </td>
+                 </tr>
+               `
+       });
+       $('#aprobado').html(template);
+     }
+   });
+ }
+ // Fin del Código
 });

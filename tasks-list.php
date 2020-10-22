@@ -1,6 +1,6 @@
 <?php
   include('database.php');
-  $query = "SELECT * from task ";
+  $query = "SELECT * from task where activa = 'No Aprobado'";
   $result = mysqli_query($connection, $query);
   if(!$result) {
     die('Query Failed'. mysqli_error($connection));
@@ -17,6 +17,7 @@
       'cc' => $row['cc'],
       'origen' => $row['origen'],
       'recorrido' => $row['recorrido'],
+      'fecha' => $row['fecha'],
       'activa' => $row['activa'],
       'id' => $row['id']
     );

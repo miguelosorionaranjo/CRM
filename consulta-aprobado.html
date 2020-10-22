@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+      #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 10px;
+      }
+      
+      #customers tr:nth-child(even){background-color: #f2f2f2;}
+      
+      #customers tr:hover {background-color: #ddd;}
+      
+      #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+      }
+      </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="#" />      
+    <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css">  
+	<link rel="stylesheet" href="estilos.css">
+    <title>FUEC</title>  
+  </head>
+  <body>
+     <!-- NAVIGATION  -->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">FUEC</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          
+          <form class="form-inline my-2 my-lg-0">
+            <input name="search" id="search" class="form-control mr-sm-2" type="search" placeholder="Ingrese Razón Social" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+          </form>
+      </div>
+    </nav>
+
+     <!-- Body  -->
+    <div style="height: 20px;"></div>
+    <div class="container"  >
+        <div class="row">
+            <div class="col-lg-12">
+            <div class="card shadow-lg p-3 mb-5 bg-white ">
+        <div class="card-header" align="center" >FORMATO ÚNICO DE EXTRACTO DE CONTROL DE SERVICIO PÚBLICO DE TRANSPORTE TERRESTRE AUTOMOTOR ESPECIAL</div>
+        <div class="card-body" >
+            <div class="container">
+                <div class="row p-12">
+          
+          
+             
+          
+                  <!-- TABLE  -->
+                  <div class="col-md-7" align="left">
+                    <div class="card my-3" id="task-result">
+                      <div class="card-body" id="customers">
+                        <!-- SEARCH -->
+                        <h1 align="center">Resultados de la Búsqueda</h1>
+ 
+                        
+                        <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
+                          <thead class="tabla">
+                            <tr class="table-primary" class="tabla">
+                             
+                              <td>N° de FUEC</td>
+                              <td>Razón Social</td>
+                              <td>NIT</td>
+                              <td>Número de Contrato</td>
+                      
+                            </tr>
+                          </thead>
+                          <tbody id="container"></tbody>
+                        </table>
+
+                        <ul id="container" style="line-height:250%" class="tabla table-bordered table-sm" > </ul>
+                      </div>
+                    </div>
+
+              <!--      <div class="container d-flex justify-content-center align-items-center"> -->
+                      <!-- LA CLASE CARD NOS SERVIRA PARA AGREGAR LA ANIMACION -->
+               <!--       <div class="card"> 
+                          <div class="card-header text-center h4 font-weight-bolder text-warning">
+                            Buscar
+                          </div>
+                          <div class="card-body"> -->
+                              <!-- select para el Número de FUEC -->
+                   <!--           <div class="form-group"> 
+                                  <label for="fuec" class="text-uppercase text-primary">N° de FUEC</label>
+                                  <select class="custom-select form-control" id="fuec"> -->
+                                      <!-- cargar con js --> 
+                       <!--           </select> 
+                              </div>
+                             
+                           
+                          </div>
+                      </div>          
+                  </div> -->
+
+
+
+
+
+                    <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
+                      <thead class="tabla">
+                        <tr class="table-primary" class="tabla">
+                          <td>Id</td>
+                          <td>N° de FUEC</td>
+                          <td>Razón Social</td>
+                          <td>NIT</td>
+                          <td>Número de Contrato</td>
+                          <td>Contratante</td>
+                          <td>Objeto de Contrato</td>
+                          <td>CC/NIT</td>
+                          <td>Origen</td>
+                          <td>Recorrido</td>
+                          <td>Fecha Solicitud</td>
+                          <td>Estado</td>
+                        </tr>
+                      </thead>
+                      <tbody id="aprobado"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+        </div>   
+    </div>
+            </div>       
+        </div>                  
+    </div>
+      
+    <script src="jquery/jquery-3.3.1.min.js"></script>	 	
+    <script src="popper/popper.min.js"></script>	 	 	
+    <script src="bootstrap4/js/bootstrap.min.js"></script>   	
+    <script src="codigo.js"></script> 	
+  </body>
+</html>

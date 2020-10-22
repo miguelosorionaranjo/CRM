@@ -31,6 +31,10 @@
     <title>FUEC</title>  
   </head>
   <body>
+    <?php
+    date_default_timezone_set('America/Mexico_City');
+    $fecha=date("Y-m-d H:i:s");
+         ?>
      <!-- NAVIGATION  -->
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">FUEC</a>
@@ -81,7 +85,7 @@
     </div>
     <div class="row">
       <div class="col-md-12 themed-grid-col" class="form-group">Contrato Número:
-      <input id="description" cols="30" rows="10" class="form-control" placeholder="Ingrese Número de Contrato" required>
+      <input type="number" id="description" cols="30" rows="10" class="form-control" placeholder="Ingrese Número de Contrato" required>
                       <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
@@ -117,12 +121,14 @@
       <input type="text" id="recorrido" placeholder=" Descripción del Recorrido" class="form-control" required>
       <div class="valid-feedback">¡Ok válido!</div>
       <div class="invalid-feedback">Complete el campo.</div>  
-        
       </div>
     </div>
-
- 
-
+    <div class="row">
+      <div class="col-md-12 themed-grid-col" class="form-group">Fecha Actual:
+      <input type="datetime" id="fecha"  class="form-control" class="fecha" value="<?= $fecha?>"  disabled="disabled">
+       
+      </div>
+    </div>
 <br>
     <input type="hidden" id="taskId">
                   <button  type="submit" class="btn btn-secondary btn-block text-center  " width="50%">
@@ -169,6 +175,7 @@
                     <td>CC/NIT</td>
                     <td>Origen</td>
                     <td>Recorrido</td>
+                    <td>Fecha Solicitud</td>
                     <td>Estado</td>
                   </tr>
                 </thead>

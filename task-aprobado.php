@@ -1,8 +1,6 @@
 <?php
-include('database.php');
-if(isset($_POST['id'])) {
-  $id = mysqli_real_escape_string($connection, $_POST['id']);
-  $query = "SELECT * from task WHERE id = {$id}";
+  include('database.php');
+  $query = "SELECT * from task where activa = 'Aprobado'";
   $result = mysqli_query($connection, $query);
   if(!$result) {
     die('Query Failed'. mysqli_error($connection));
@@ -19,10 +17,11 @@ if(isset($_POST['id'])) {
       'cc' => $row['cc'],
       'origen' => $row['origen'],
       'recorrido' => $row['recorrido'],
+      'fecha' => $row['fecha'],
+      'activa' => $row['activa'],
       'id' => $row['id']
     );
   }
-  $jsonstring = json_encode($json[0]);
+  $jsonstring = json_encode($json);
   echo $jsonstring;
-}
 ?>

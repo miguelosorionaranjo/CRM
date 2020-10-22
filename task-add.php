@@ -11,8 +11,11 @@ if(isset($_POST['name'])) {
   $task_cc = $_POST['cc'];
   $task_origen = $_POST['origen'];
   $task_recorrido = $_POST['recorrido'];
+  $task_fecha = $_POST['fecha'];
   $task_activa = $_POST['activa'];
-  $query = "INSERT into task(fuec, name, apellido, description, contratante, objetocontrato, cc, origen, recorrido, activa) VALUES ('$task_fuec','$task_name', '$task_apellido', '$task_description', '$task_contratante', '$task_objetocontrato', '$task_cc', '$task_origen', '$task_recorrido', 'No Aprobado')";
+  $query = "INSERT into task(fuec, name, apellido, description, contratante, objetocontrato, cc, origen, recorrido, fecha, activa) VALUES 
+  ('$task_fuec','$task_name', '$task_apellido', '$task_description', '$task_contratante', '$task_objetocontrato', '$task_cc', 
+  '$task_origen', '$task_recorrido', '$task_fecha', 'No Aprobado')";
   $result = mysqli_query($connection, $query);
   if (!$result) {
     die('Query Failed.');
