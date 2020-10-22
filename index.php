@@ -126,7 +126,6 @@
     <div class="row">
       <div class="col-md-12 themed-grid-col" class="form-group">Fecha Actual:
       <input type="datetime" id="fecha"  class="form-control" class="fecha" value="<?= $fecha?>"  disabled="disabled">
-       
       </div>
     </div>
 <br>
