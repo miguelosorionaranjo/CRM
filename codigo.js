@@ -196,7 +196,7 @@ $(document).ready(function() {
        let template = '';
        aprobado.forEach(task => {
          template += `
-                 <tr >
+                 <tr taskId="${task.id}">
                  <td>${task.id}</td>
                  <td  >
                  ${task.fuec}

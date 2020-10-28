@@ -28,5 +28,4 @@ if(isset($_POST['name'])) {
  # alert("Ingrese Número de FUEC");
 #}
 }
-
 ?>
