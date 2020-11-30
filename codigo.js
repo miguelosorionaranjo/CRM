@@ -23,14 +23,16 @@ $(document).ready(function() {
   // Testing Jquery
   console.log('jquery is working!');
   fetchTasks();
-  fetchAprobado();
+  marca();
+  usuario();
+  producto();
   $('#task-result').hide();
   // Buscador
   $('#search').keyup(function() {
     if($('#search').val()) {
       let search = $('#search').val();
       $.ajax({
-        url: 'task-search.php',
+        url: 'buscar.php',
         data: {search},
         type: 'POST',
         success: function (response) {
@@ -40,16 +42,17 @@ $(document).ready(function() {
             tasks.forEach(task => {
               template += `
               <tr  >
+              <td>${task.gender}</td>
               <td  >
-              ${task.fuec}
-              </td>
-              <td>
-                ${task.name} 
+              ${task.nombre}
               </td>
               <td>
                 ${task.apellido} 
               </td>
-              <td>${task.description}</td>
+              <td>
+                ${task.cargo} 
+              </td>
+              
               </tr>
                     ` 
             });
@@ -60,35 +63,143 @@ $(document).ready(function() {
       })
     }
   });
+
+  //Agregar Marca
+  $('#agregar-marca').submit(e => {
+    e.preventDefault();
+    const postData = {
+      nombre2: $('#nombre2').val(),
+      id: $('#taskId').val()
+    };
+    const url = 'agregar-marca.php'  ;
+    console.log(postData, url);
+    $.post(url, postData, (response) => {
+      console.log(response);
+      $('#agregar-marca').trigger('reset');
+      fetchTasks();
+      marca();
+      usuario();
+      producto();
+    });
+  });
+  // Lista de mARCA
+  function marca() {
+    $.ajax({
+      url: 'lista-marca.php',
+      type: 'GET',
+      success: function(response) {
+        const marca = JSON.parse(response);
+        let template = '';
+        marca.forEach(task => {
+          template += `
+                  <tr taskId="${task.id}">
+                  <td>${task.id}</td>
+                  <td  >
+                  ${task.nombre}
+                  </td>
+                  <td>
+                    <button class="task-delete btn btn-danger">
+                     Eliminar 
+                    </button>
+                  </td>
+                  </tr>
+                `
+        });
+        $('#marca').html(template);
+      }
+    });
+  }
+  
+  //Agregar Usuario
+  $('#agregar-usuario').submit(e => {
+    e.preventDefault();
+    const postData = {
+      nombre3: $('#nombre3').val(),
+      apellido3: $('#apellido3').val(),
+      id: $('#taskId').val()
+    };
+    const url = 'agregar-usuario.php'  ;
+    console.log(postData, url);
+    $.post(url, postData, (response) => {
+      console.log(response);
+      $('#agregar-usuario').trigger('reset');
+      fetchTasks();
+      marca();
+      usuario();
+      producto();
+    });
+  });
+
+  // Lista de Usuario
+  function usuario() {
+    $.ajax({
+      url: 'lista-usuario.php',
+      type: 'GET',
+      success: function(response) {
+        const usuario = JSON.parse(response);
+        let template = '';
+        usuario.forEach(task => {
+          template += `
+                  <tr taskId="${task.id}">
+                  <td>${task.id}</td>
+                  <td  >
+                  ${task.nombre3}
+                  </td>
+                  
+                  <td  >
+                  ${task.apellido3}
+                  </td>
+                  <td>
+                    <button class="task-eliminar btn btn-danger">
+                     Eliminar 
+                    </button>
+                  </td>
+                  </tr>
+                `
+        });
+        $('#usuario').html(template);
+      }
+    });
+  }
+//Agregar Pre-Contacto
   $('#task-form').submit(e => {
     e.preventDefault();
     const postData = {
-      fuec: $('#fuec').val(),
-      name: $('#name').val(),
+      gender: $('#gender').val(),
+      nombre: $('#nombre').val(),
       apellido: $('#apellido').val(),
-      description: $('#description').val(),
-      contratante: $('#contratante').val(),
-      objetocontrato: $('#objetocontrato').val(),
-      cc: $('#cc').val(),
+      principal: $('#principal').val(),
+      celular: $('#celular').val(),
+      cargo: $('#cargo').val(),
       origen: $('#origen').val(),
-      recorrido: $('#recorrido').val(),
+      pais: $('#pais').val(),
+      departamento: $('#departamento').val(),
+      ciudad: $('#ciudad').val(),
+      pagina: $('#pagina').val(),
+      empresa: $('#empresa').val(),
+      industria: $('#industria').val(),
+      direccion: $('#direccion').val(),
+      ps: $('#ps').val(),
+      buscadormarca: $('#buscadormarca').val(),
+      buscadorvivo: $('#buscadorvivo').val(),
+      precontacto: $('#precontacto').val(),
+      descripcion: $('#descripcion').val(),
       fecha: $('#fecha').val(),
-      activa: $('#activa').val(),
+      fechamod: $('#fechamod').val(),
       id: $('#taskId').val()
     };
-    const url = edit === false ? 'task-add.php' : 'task-edit.php' ;
+    const url = edit === false ? 'agregar.php' : 'editar.php' ;
     console.log(postData, url);
     $.post(url, postData, (response) => {
       console.log(response);
       $('#task-form').trigger('reset');
       fetchTasks();
-      fetchAprobado();
     });
   });
   // Fetching Tasks
   function fetchTasks() {
     $.ajax({
-      url: 'tasks-list.php',
+      url: 'lista.php',
       type: 'GET',
       success: function(response) {
         const tasks = JSON.parse(response);
@@ -98,11 +209,11 @@ $(document).ready(function() {
                   <tr taskId="${task.id}">
                   <td>${task.id}</td>
                   <td  >
-                  ${task.fuec}
+                  ${task.gender}
                   </td>
                   <td>
                   <a href="#" class="task-item">
-                    ${task.name} 
+                    ${task.nombre} 
                   </a>
                   </td>
                   <td>
@@ -110,29 +221,68 @@ $(document).ready(function() {
                     ${task.apellido} 
                   </a>
                   </td>
-                  <td>${task.description}</td>
+                  <td>${task.principal}</td>
                   <td  >
-                  ${task.contratante}
+                  ${task.celular}
                   </td>
                   <td  >
-                  ${task.objetocontrato}
+                  ${task.cargo}
                   </td>
                   <td  >
-                  ${task.cc}
-                  </td>
-                  <td   >
                   ${task.origen}
                   </td>
-                  <td >
-                  ${task.recorrido}
+                  <td>
+                  ${task.pais}
                   </td>
+                  <td   >
+                  ${task.departamento}
+                  </td>
+                  <td >
+                  ${task.ciudad}
+                  </td>
+                  
+                  <td>
+                  ${task.pagina}
+                  </td>
+                  
+                  <td>
+                  ${task.empresa}
+                  </td>
+                  
+                  <td>
+                  ${task.industria}
+                  </td>
+                  
+                  <td>
+                  ${task.direccion}
+                  </td>
+                  
+                  <td>
+                  ${task.ps}
+                  </td>
+                  
+                  <td>
+                  ${task.buscadormarca}
+                  </td>
+                  
+                  <td>
+                  ${task.buscadorvivo}
+                  </td>
+                  
+                  <td>
+                  ${task.precontacto}
+                  </td>
+                  
+                  <td>
+                  ${task.descripcion}
+                  </td>
+                  
                   <td >
                   ${task.fecha}
                   </td>
+                  
                   <td>
-                    <button class="task-activa btn btn-success-activa ">
-                    ${task.activa}
-                    </button>
+                  ${task.fechamod}
                   </td>
                   <td>
                     <button class="task-delete btn btn-danger">
@@ -150,102 +300,146 @@ $(document).ready(function() {
   $(document).on('click', '.task-item', (e) => {
     const element = $(this)[0].activeElement.parentElement.parentElement;
     const id = $(element).attr('taskId');
-    $.post('task-single.php', {id}, (response) => {
+    $.post('busqueda-simple.php', {id}, (response) => {
       const task = JSON.parse(response);
-      $('#fuec').val(task.fuec);
-      $('#name').val(task.name);
+      $('#gender').val(task.gender);
+      $('#nombre').val(task.nombre);
       $('#apellido').val(task.apellido);
-      $('#description').val(task.description);
-      $('#contratante').val(task.contratante);
-      $('#objetocontrato').val(task.objetocontrato);
-      $('#cc').val(task.cc);
+      $('#principal').val(task.principal);
+      $('#celular').val(task.celular);
+      $('#cargo').val(task.cargo);
       $('#origen').val(task.origen);
-      $('#recorrido').val(task.recorrido);
+      $('#pais').val(task.pais);
+      $('#departamento').val(task.departamento);
+      $('#ciudad').val(task.ciudad);
+      $('#pagina').val(task.pagina);
+      $('#empresa').val(task.empresa);
+      $('#industria').val(task.industria);
+      $('#direccion').val(task.direccion);
+      $('#ps').val(task.ps);
+      $('#buscadormarca').val(task.buscadormarca);
+      $('#buscadorvivo').val(task.buscadorvivo);
+      $('#precontacto').val(task.precontacto);
+      $('#descripcion').val(task.descripcion);
+      $('#fecha').val(task.fecha);
+      $('#fechamod').val(task.fechamod);
       $('#taskId').val(task.id);
       edit = true;
     });
     e.preventDefault();
   });
-  // Delete a Single Task
+  // Eliminar Pre-Contacto
   $(document).on('click', '.task-delete', (e) => {
     if(confirm('¿Estás seguro de que quieres eliminarlo?')) {
       const element = $(this)[0].activeElement.parentElement.parentElement;
       const id = $(element).attr('taskId');
-      $.post('task-delete.php', {id}, (response) => {
+      $.post('eliminar.php', {id}, (response) => {
         fetchTasks();
       });
     }
   });
+    // Eliminar Usuario
+    $(document).on('click', '.task-eliminar', (e) => {
+      if(confirm('¿Estás seguro de que quieres eliminarlo?')) {
+        const element = $(this)[0].activeElement.parentElement.parentElement;
+        const id = $(element).attr('taskId');
+        $.post('eliminar-usuario.php', {id}, (response) => {
+          fetchTasks();
+        });
+      }
+    });
 
-  $(document).on('click', '.task-activa', (e) => {
-    if(confirm('¿Estás seguro de que quieres activarlo?')) {
+  // Eliminar Marca
+  $(document).on('click', '.task-delete', (e) => {
+    if(confirm('¿Estás seguro de que quieres eliminarlo?')) {
       const element = $(this)[0].activeElement.parentElement.parentElement;
       const id = $(element).attr('taskId');
-      $.post('task-activa.php', {id}, (response) => {
+      $.post('eliminar-marca.php', {id}, (response) => {
         fetchTasks();
       });
     }
   });
-  // Consulta de Aprobados
-  function fetchAprobado() {
-   $.ajax({
-     url: 'task-aprobado.php',
-     type: 'GET',
-     success: function(response) {
-       const aprobado = JSON.parse(response);
-       let template = '';
-       aprobado.forEach(task => {
-         template += `
-                 <tr taskId="${task.id}">
-                 <td>${task.id}</td>
-                 <td  >
-                 ${task.fuec}
-                 </td>
-                 <td>
-                 <a href="#" class="task-item">
-                   ${task.name} 
-                 </a>
-                 </td>
-                 <td>
-                 <a href="#" class="task-item">
-                   ${task.apellido} 
-                 </a>
-                 </td>
-                 <td>${task.description}</td>
-                 <td  >
-                 ${task.contratante}
-                 </td>
-                 <td  >
-                 ${task.objetocontrato}
-                 </td>
-                 <td  >
-                 ${task.cc}
-                 </td>
-                 <td   >
-                 ${task.origen}
-                 </td>
-                 <td >
-                 ${task.recorrido}
-                 </td>
-                 <td >
-                  ${task.fecha}
-                  </td>
-                 <td>
-                   <button class="task-activa btn btn-success-activa ">
-                   ${task.activa}
-                   </button>
-                 </td>
-                 <td>
-                   <button class="task-delete btn btn-danger">
-                    Eliminar 
-                   </button>
-                 </td>
-                 </tr>
-               `
-       });
-       $('#aprobado').html(template);
-     }
-   });
- }
+//Agregar Producto
+$('#task-producto').submit(e => {
+  e.preventDefault();
+  const postData = {
+    name: $('#name').val(),
+    codigo: $('#codigo').val(),
+    precio: $('#precio').val(),
+    iva: $('#iva').val(),
+    cantidad: $('#cantidad').val(),
+    categoria: $('#categoria').val(),
+    proveedor: $('#proveedor').val(),
+    imagen: $('#imagen').val(),
+    id: $('#taskId').val()
+  };
+  const url =  'agregar-producto.php'  ;
+  console.log(postData, url);
+  $.post(url, postData, (response) => {
+    console.log(response);
+    $('#task-producto').trigger('reset');
+    fetchTasks();
+  });
+});
+// Lista de Producto
+function producto() {
+  $.ajax({
+    url: 'lista-producto.php',
+    type: 'GET',
+    success: function(response) {
+      const producto = JSON.parse(response);
+      let template = '';
+      producto.forEach(task => {
+        template += `
+                <tr taskId="${task.id}">
+                <td>${task.id}</td>
+                <td  >
+                ${task.name}
+                </td>
+                <td  >
+                ${task.codigo}
+                </td>
+               
+                <td  >
+                ${task.cantidad}
+                </td>
+                <td  >
+                ${task.imagen}
+                </td>
+                <td>
+                  <button class="task-eliminar btn btn-danger">
+                   Eliminar 
+                  </button>
+                </td>
+                </tr>
+              `
+      });
+      $('#producto').html(template);
+    }
+  });
+}
+  //Agregar Campaña
+  $('#agregar-campana').submit(e => {
+    e.preventDefault();
+    const postData = {
+      nombrec: $('#nombrec').val(),
+      buscadorvivo: $('#buscadorvivo').val(),
+      tipoc: $('#tipoc').val(),
+      webc: $('#webc').val(),
+      estadoc: $('#estadoc').val(),
+      descripcionc: $('#descripcionc').val(),
+      id: $('#taskId').val()
+    };
+    const url = 'agregar-campana.php'  ;
+    console.log(postData, url);
+    $.post(url, postData, (response) => {
+      console.log(response);
+      $('#agregar-campana').trigger('reset');
+      fetchTasks();
+      marca();
+      usuario();
+      producto();
+    });
+  });
  // Fin del Código
 });
