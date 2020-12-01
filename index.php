@@ -995,9 +995,35 @@ h6 {
 -->
 
 
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+    <div class="card-header" >
+    Oportunidades
+  </div>
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+    <div class="card-header">
+    Campañas
+  </div>
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-
+<br>
 <div class="card-deck">
   <div class="card">
     <img class="imagen" class="card-img-top" src="imagenes/Logo1.jpg" alt="Card image cap" >
@@ -1024,9 +1050,6 @@ h6 {
     </div>
   </div>
 </div>
-
-
-
 
 
 
