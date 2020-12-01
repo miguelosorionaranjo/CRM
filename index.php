@@ -22,6 +22,48 @@
         background-color: #4CAF50;
         color: white;
       }
+      h1 {
+  color: #6c2eb9;
+  font-weight: normal;
+  font-size: 40px;
+  font-family: Arial;
+  text-transform: uppercase;
+}
+h2 {
+  color: #3c1b66;
+  font-weight: normal;
+  font-size: 35px;
+  font-family: Arial;
+  text-transform: uppercase;
+}
+h3 {
+  color: #443963;
+  font-weight: normal;
+  font-size: 30px;
+  font-family: Arial;
+  text-transform: lowercase;
+}
+h4 {
+  color: #4f4866;
+  font-weight: normal;
+  font-size: 25px;
+  font-family: Arial;
+  text-transform: lowercase;
+}
+h5 {
+  color: #656172;
+  font-weight: normal;
+  font-size: 20px;
+  font-family: Arial;
+  text-transform: lowercase;
+}
+h6 {
+  color: #747377;
+  font-weight: normal;
+  font-size: 18px;
+  font-family: Arial;
+  text-transform: lowercase;
+}
       </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -279,13 +321,18 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6 themed-grid-col" class="form-group">Precio del Producto: 
-        <input type="text" id="precio" placeholder="Ingrese Precio del Producto" class="form-control" required>            
+      <div class="col-md-4 themed-grid-col" class="form-group">Precio del Producto: 
+        <input type="number" id="precio" placeholder="Ingrese Precio " class="form-control" required>            
         <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div> 
       </div>
-      <div class="col-md-6 themed-grid-col" class="form-group">IVA %:
+      <div class="col-md-4 themed-grid-col" class="form-group">IVA %:
         <input type="number" id="iva" placeholder=" Ingrese IVA%" class="form-control" required>
+        <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+      <div class="col-md-4 themed-grid-col" class="form-group">Total:
+        <input type="number" id="total"  class="form-control" disabled="disabled">
         <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
@@ -327,7 +374,7 @@
 
     <div class="row">
       <div class="col-md-12 themed-grid-col" class="form-group">Imagen del Producto:
-        <input type="file" class="form-control" name="imagen" id="imagen" required>
+        <input type="file" class="form-control"  id="imagen" required>
                       <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
@@ -639,8 +686,12 @@
           </div>
         <div class="card-body">
 
-        
-<h5>Bienvenidos</h5>
+        <h1 class="display-1" align="center">Bienvenidos</h1>
+
+     <!--    <h1 class="h2">Encabezado h1 con estilo h2</h1> -->
+
+
+ <!--
 <div class="col-md-7" align="left">
              
              <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
@@ -656,7 +707,45 @@
                 <tbody id="producto"></tbody>
               </table> 
             </div>  
+-->
 
+
+
+
+
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="imagenes/Logo1.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <button type="button" class="btn btn-primary">Ir a...</button>
+       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="imagenes/Logo2.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <button type="button" class="btn btn-primary">Ir a...</button>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="imagenes/Logo3.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <button type="button" class="btn btn-primary">Ir a...</button>
+       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Final Div  -->
         </div>  
     </div>
             <!-- TABLE  -->
@@ -679,6 +768,7 @@
                   <ul id="container" style="line-height:250%" class="tabla table-bordered table-sm" > </ul>
                 </div>
               </div>
+              <!--
               <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
                 <thead class="tabla">
                   <tr class="table-primary" class="tabla">
@@ -707,7 +797,7 @@
                   </tr>
                 </thead>
                 <tbody id="tasks"></tbody>
-              </table>
+              </table> -->
             </div>  
             </div> 
         </div>                  

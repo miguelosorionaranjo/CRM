@@ -10,37 +10,31 @@
     $task_cantidad = $_POST['cantidad'];
     $task_categoria = $_POST['categoria'];
     $task_proveedor = $_POST['proveedor'];
-    $task_imagen = $_POST['imagen'];
+    $task_imagen = $_FILES['imagen']['id'];
 
+    $tipo = $_FILES['imagen']['type'];
+    $tamagno = $_FILES['imagen']['size'];
  //   $dir_subida = 'imagenes/';
   //  $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
   //  move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
-  $uploads_dir = '/imagenes';
+
+      //Ruta de la carpeta destino en el servidor
+      $carpeta_destino=$_SERVER['DOCUMENT_ROOT'].'/FasePiGroup/CRM/imagenes/';
+
     if(file_exists($_FILES['imagen']['tmp_name'])|| is_uploaded_file($_FILES['imagen']['tmp_name']));
     {
       $ext = explode(".", $_FILES['imagen']);
       if($_FILES['imagen']['type'] == "imagen/jpg" || $_FILES['imagen']['type']  == "imagen/jpeg" || 
       $_FILES['imagen']['type'] == "imagen/png");
       {
+    
         $task_imagen = round(microtime(true)) . '.' . end($ext);
-        move_uploaded_file($tmp_name, "$uploads_dir/$task_imagen");
-        //move_uploaded_file($_FILES['imagen']['tmp_name'],'imagenes/'.$task_imagen);
+        move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta_destino.$task_imagen);
       }
     }
     
 
-    <?php
-$uploads_dir = '/uploads';
-foreach ($_FILES["pictures"]["error"] as $key => $error) {
-    if ($error == UPLOAD_ERR_OK) {
-        $tmp_name = $_FILES["pictures"]["tmp_name"][$key];
-        // basename() puede evitar ataques de denegación de sistema de ficheros;
-        // podría ser apropiada más validación/saneamiento del nombre del fichero
-        $name = basename($_FILES["pictures"]["name"][$key]);
-        move_uploaded_file($tmp_name, "$uploads_dir/$name");
-    }
-}
-?>
+
  //   if(isset($imagen) && $imagen != ""){
    //   $tipo = $_FILES['imagen']['type'];
      // $temp  = $_FILES['imagen']['tmp_name'];
@@ -99,6 +93,8 @@ foreach ($_FILES["pictures"]["error"] as $key => $error) {
         //      $_SESSION['tipo'] = 'danger';
   }
   echo "Registrado con Éxito";  
+
+ // echo  $_FILES['imagen']['type'];
 }
 
 
