@@ -101,23 +101,23 @@ h6 {
         <a class="nav-link" href="index.php">Inicio </a>
       </li>
       <li class="nav-item ">
-      <a href="#exampleModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Usuario</span></a>
+      <a href="#exampleModal"  class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Usuario</span></a>
       </li>
       <li class="nav-item">
-      <a href="#exampleModal2" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nueva Marca</span></a>
+      <a href="#exampleModal2" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nueva Marca</span></a>
       </li>
       
       <li class="nav-item">
-      <a href="#exampleModal3" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Producto</span></a>
+      <a href="#exampleModal3" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Producto</span></a>
       </li>
       <li class="nav-item">
-      <a href="#exampleModal5" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nueva Campaña</span></a>
+      <a href="#exampleModal5" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nueva Campaña</span></a>
       </li>
       <li class="nav-item">
-      <a href="#exampleModal6" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Contacto</span></a>
+      <a href="#exampleModal6" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Contacto</span></a>
       </li>
       <li class="nav-item">
-      <a href="#exampleModal4" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Pre-Contacto</span></a>
+      <a href="#exampleModal4" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Pre-Contacto</span></a>
       </li>
       </div>
     </nav>
@@ -224,7 +224,7 @@ h6 {
     
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-success" value="Guardar datos">
+						<input type="submit" class="btn btn-primary" value="Guardar datos">
 					</div>
       </div>
       </fieldset>
@@ -260,7 +260,7 @@ h6 {
     </div>  
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-success" value="Guardar datos">
+						<input type="submit" class="btn btn-primary" value="Guardar datos">
 					</div>
       </div>
       </fieldset>
@@ -290,7 +290,7 @@ h6 {
 
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-success" value="Guardar datos">
+						<input type="submit" class="btn btn-primary" value="Guardar datos">
 					</div>
       </div>
       </fieldset>
@@ -390,7 +390,7 @@ h6 {
 					<div class="modal-footer">
         
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-success" value="Guardar datos">
+						<input type="submit" class="btn btn-primary" value="Guardar datos">
 					</div>
       </div>
       </fieldset>
@@ -668,7 +668,7 @@ h6 {
 					<div class="modal-footer">
           <input type="hidden" id="taskId">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-success" value="Guardar datos">
+						<input type="submit" class="btn btn-primary" value="Guardar datos">
 					</div>
 
       </div>
@@ -947,7 +947,7 @@ h6 {
 					<div class="modal-footer">
           <input type="hidden" id="taskId">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-success" value="Guardar datos">
+						<input type="submit" class="btn btn-primary" value="Guardar datos">
 					</div>
 
       </div>
@@ -966,7 +966,7 @@ h6 {
             <div align="right">
         <form class="form-inline my-2 my-lg-0">
             <input name="search" id="search" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
           </form>
           </div>
         <div class="card-body">
@@ -998,7 +998,7 @@ h6 {
 <div class="row">
   <div class="col-sm-6">
     <div class="card">
-    <div class="card-header" >
+    <div class="card-header" align="center">
     Oportunidades
   </div>
       <div class="card-body">
@@ -1010,7 +1010,7 @@ h6 {
   </div>
   <div class="col-sm-6">
     <div class="card">
-    <div class="card-header">
+    <div class="card-header" align="center">
     Campañas
   </div>
       <div class="card-body">
