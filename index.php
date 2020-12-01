@@ -110,12 +110,14 @@ h6 {
       <li class="nav-item">
       <a href="#exampleModal3" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Producto</span></a>
       </li>
-
-      <li class="nav-item">
-      <a href="#exampleModal4" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Pre-Contacto</span></a>
-      </li>
       <li class="nav-item">
       <a href="#exampleModal5" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nueva Campaña</span></a>
+      </li>
+      <li class="nav-item">
+      <a href="#exampleModal6" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Contacto</span></a>
+      </li>
+      <li class="nav-item">
+      <a href="#exampleModal4" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Pre-Contacto</span></a>
       </li>
       </div>
     </nav>
@@ -403,6 +405,285 @@ h6 {
     <div class="modal-content">
       <div class="modal-header" >
       <h4 class="modal-title">Agregar Pre-Contacto</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="task-form" method="post" class="needs-validation" novalidate>
+     <fieldset id="task-form" method="post" class="needs-validation" novalidate>
+     <div class="modal-body" width="200px" class="container">
+     <div class="row">
+      <div class="col-md-4 themed-grid-col" class="form-group"><br> 
+        <select class="form-control" id="gender" required>
+      <option value="">Opciones</option>
+      <option value="Sr">Sr.</option>
+      <option value="Sra">Sra.</option>
+      <option Value="Srita">Srita.</option>
+      <option value="Dr">Dr.</option>
+      <option value="Prof">Prof.</option>
+      <option value="Ing">Ing.</option>
+    </select>        
+        <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div> 
+      </div>
+      <div class="col-md-4 themed-grid-col" class="form-group">Nombre:
+        <input type="text" id="nombre" placeholder=" Ingrese Nombre" class="form-control" required>
+        <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+      <div class="col-md-4 themed-grid-col" class="form-group"> Apellido: 
+        <input type="text" id="apellido" placeholder="Ingrese Apellido" class="form-control" required>            
+        <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div> 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 themed-grid-col" class="form-group"> Número de Teléfono Principal:
+      <input type="number" id="principal" cols="30" rows="10" class="form-control" placeholder="Ingrese Número de Contrato" required>
+                      <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+
+      <div class="col-md-6 themed-grid-col" class="form-group"> Número de Celular:
+      <input type="number" id="celular" cols="30" rows="10" class="form-control" placeholder="Ingrese Número de Contrato" required>
+                      <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 themed-grid-col" class="form-group">Cargo:
+      <input type="text" id="cargo" placeholder=" Contratante" class="form-control" required>
+                      <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+      <div class="col-md-4 themed-grid-col" class="form-group">Origen Pre-Contacto:
+        <select class="form-control" id="origen" required>
+      <option value="">Opciones</option>
+      <option value="Pagina Web">Página Web</option>
+      <option value="Sitio Web">Sitio Web</option>
+      <option Value="Base de Datos">Base de Datos</option>
+      <option value="Referido">Referido</option>
+      <option value="E-mail Marketing">E-mail Marketing</option>
+      <option value="Facebook">Facebook</option>
+      <option value="Instagram">Instagram</option>
+      <option value="Twitter">Twitter</option>
+      <option value="Llamada">Llamada</option>
+      <option value="Relaciones Públicas">Relaciones Públicas</option>
+      <option value="Conferencia">Conferencia</option>
+      <option value="Llamada Google">Llamada Google</option>
+      <option value="Mercadeo Google">Mercadeo Google</option>
+    </select> 
+                      <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+    </div>
+
+    <div class="pb-3">
+    <div class="col-md-12 mb-3" class="form-group">           
+                    </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-4 themed-grid-col" class="form-group">Pais:
+        <select class="form-control" id="pais" required>
+      <option value="">Opciones</option>
+      <option value="Colombia">Colombia.</option>
+      <option value="Mexico">México.</option>
+      <option Value="Peru">Perú.</option>
+      <option value="Rusia">Rusia.</option>
+    </select> 
+    <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+      <div class="col-md-4 themed-grid-col" class="form-group">Departamento:
+        <select class="form-control" id="departamento" required>
+      <option value="">Opciones</option>
+      <option value="Sr">Sr.</option>
+      <option value="Sra">Sra.</option>
+      <option Value="Srita">Srita.</option>
+      <option value="Dr">Dr.</option>
+      <option value="Prof">Prof.</option>
+      <option value="Ing">Ing.</option>
+    </select> 
+                    <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+      <div class="col-md-4 themed-grid-col" class="form-group">Ciudad:
+        <select class="form-control" id="ciudad" required>
+      <option value="">Opciones</option>
+      <option value="Sr">Sr.</option>
+      <option value="Sra">Sra.</option>
+      <option Value="Srita">Srita.</option>
+      <option value="Dr">Dr.</option>
+      <option value="Prof">Prof.</option>
+      <option value="Ing">Ing.</option>
+    </select> 
+                     <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+    </div>
+
+    
+    <div class="pb-3">
+    <div class="col-md-12 mb-3" class="form-group">           
+                    </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 themed-grid-col" class="form-group">Página:
+      <input type="text" id="pagina" placeholder="Ingrese URL de Página" class="form-control" required>
+                        <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>   
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 themed-grid-col" class="form-group">Nombre de la Empresa:
+      <input type="text" id="empresa" placeholder=" Descripción del Recorrido" class="form-control" required>
+      <div class="valid-feedback">¡Ok válido!</div>
+      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+      <div class="col-md-6 themed-grid-col" class="form-group">Industria:
+        <select class="form-control" id="industria" required>
+      <option value="">Opciones</option>
+      <option value="Sr">Sr.</option>
+      <option value="Sra">Sra.</option>
+      <option Value="Srita">Srita.</option>
+      <option value="Dr">Dr.</option>
+      <option value="Prof">Prof.</option>
+      <option value="Ing">Ing.</option>
+    </select> 
+   
+    <div class="valid-feedback">¡Ok válido!</div>
+      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+      <div class="col-md-12 themed-grid-col" class="form-group">Dirección:
+        <textarea class="form-control" onkeyup="dirr(this);" maxlength="201" id="direccion" placeholder="Ingrese Dirección"></textarea>
+      <div class="valid-feedback">¡Ok válido!</div>
+      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+    </div>
+
+    <div class="pb-3">
+    <div class="col-md-12 mb-3" class="form-group">           
+                    </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-md-6 themed-grid-col" class="form-group"> Producto o Servicio:
+      <input type="text" id="ps" cols="30" rows="10" class="form-control" placeholder="Ingrese Número de Contrato" required>
+                      <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+
+      <div class="col-md-6 themed-grid-col" class="form-group"> Marca:
+  
+        <select class="form-control" id="buscadormarca" required>
+        <?php
+  include('database.php');
+
+  $consulta="SELECT * FROM marca ORDER BY nombre2 ASC";
+  $ejecutar= mysqli_query($connection,$consulta) or die (mysqli_error($connection));
+  ?>
+
+<option value="">Opciones</option>
+  <?php foreach ($ejecutar as $opciones): ?>
+
+      <option value="<?php echo $opciones['nombre2']?>"><?php echo $opciones['nombre2']?></option>
+   <?php endforeach ?>
+    </select> 
+ 
+                   <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6 themed-grid-col" class="form-group">Asignado a:
+        <select class="form-control" id="buscadorvivo" required>
+        <?php
+  include('database.php');
+
+  $consulta2="SELECT nombre3, apellido3 FROM usuario ORDER BY nombre3 ASC";
+  $ejecutar= mysqli_query($connection,$consulta2) or die (mysqli_error($connection));
+  ?>
+
+<option value="">Opciones</option>
+  <?php foreach ($ejecutar as $opciones): ?>
+
+      <option value="<?php echo $opciones['nombre3']."&nbsp;".$opciones['apellido3']?>"><?php echo $opciones['nombre3']."&nbsp;".$opciones['apellido3']?></option>
+   <?php endforeach ?>
+    </select> 
+ 
+                      <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+
+      <div class="col-md-6 themed-grid-col" class="form-group"> Pre-Contacto:
+  
+        <select class="form-control" id="precontacto" required>
+      <option value="">Opciones</option>
+      <option value="Nuevo">Nuevo.</option>
+      <option value="No Interesado">No Interesado.</option>
+      <option Value="Contactados Chat">Contactados Chat.</option>
+      <option value="Intentando Contactar">Intentando Contactar.</option>
+      <option value="Verificar Datos">Verificar Datos.</option>
+      <option value="Descargato">Descartado.</option>
+    </select> 
+ 
+                   <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+    </div>
+
+    
+    <div class="row">
+      <div class="col-md-12 themed-grid-col" class="form-group"> Descripción:
+     
+        <textarea class="form-control" onkeyup="dirr(this);" maxlength="201" id="descripcion" placeholder="Ingrese descripción"></textarea>                 
+        <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+
+    </div>
+    
+    <div class="pb-3">
+    <div class="col-md-12 mb-3" class="form-group">           
+                    </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 themed-grid-col" class="form-group">Fecha de Creación:
+      <input type="datetime" id="fecha"  class="form-control" class="fecha" value="<?= $fecha?>"  disabled="disabled">
+      </div>
+
+      <div class="col-md-6 themed-grid-col" class="form-group">Fecha de Modificación:
+      <input type="datetime" id="fechamod"  class="form-control" class="fecha" value="<?= $fecha?>"  disabled="disabled">
+      </div>
+    </div>
+<br>
+					<div class="modal-footer">
+          <input type="hidden" id="taskId">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+						<input type="submit" class="btn btn-success" value="Guardar datos">
+					</div>
+
+      </div>
+      </fieldset>
+      </form>
+    </div>
+  </div>
+</div>    
+
+<!-- Modal Contacto -->
+<div class="modal fade" id="exampleModal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" >
+      <h4 class="modal-title">Agregar Contacto</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
