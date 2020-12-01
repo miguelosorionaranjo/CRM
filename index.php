@@ -64,6 +64,10 @@ h6 {
   font-family: Arial;
   text-transform: lowercase;
 }
+.imagen {
+    width:70%;
+    text-align: center;
+}
       </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -715,25 +719,25 @@ h6 {
 
 <div class="card-deck">
   <div class="card">
-    <img class="card-img-top" src="imagenes/Logo1.jpg" alt="Card image cap">
+    <img class="imagen" class="card-img-top" src="imagenes/Logo1.jpg" alt="Card image cap" >
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
+  <!--    <h5 class="card-title">Card title</h5> -->
       <button type="button" class="btn btn-primary">Ir a...</button>
        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top" src="imagenes/Logo2.png" alt="Card image cap">
+    <img class="imagen" class="card-img-top" src="imagenes/Logo2.png" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
+   <!--   <h5 class="card-title">Card title</h5> -->
       <button type="button" class="btn btn-primary">Ir a...</button>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top" src="imagenes/Logo3.png" alt="Card image cap">
+    <img class="imagen" class="card-img-top" src="imagenes/Logo3.png" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
+   <!--   <h5 class="card-title">Card title</h5> -->
       <button type="button" class="btn btn-primary">Ir a...</button>
        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
