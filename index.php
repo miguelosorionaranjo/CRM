@@ -80,8 +80,25 @@ h6 {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
 	<link rel="stylesheet" href="estilos.css">
     <title>CRM</title>  
+    <script>
+			
+      $(function(){
+      // Clona la fila oculta que tiene los campos base, y la agrega al final de la tabla
+      $("#adicional").on('click', function(){
+        $("#tabla tbody tr:eq(0)").clone().removeClass('fila-fija').appendTo("#tabla");
+      });
+     
+      // Evento que selecciona la fila y la elimina 
+      $(document).on("click",".eliminar",function(){
+        var parent = $(this).parents().get(0);
+        $(parent).remove();
+      });
+          });
+    
+      </script>
   </head>
   <body>
     <?php
@@ -233,6 +250,7 @@ h6 {
   </div>
 </div>    
   
+
 <!-- Modal de Usuario -->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">
    <div class="modal-dialog" role="document">
@@ -244,30 +262,31 @@ h6 {
         </button>
       </div>
       <form id="agregar-usuario" method="post" class="needs-validation" novalidate>
-      <fieldset id="agregar-usuario" method="post" class="needs-validation" novalidate>
-      <div class="modal-body" width="200px" class="container">
-      <div class="row">
-      <div class="col-md-6 themed-grid-col" class="form-group">Nombre: 
-        <input type="text" id="nombre3" placeholder="Ingrese Nombre" class="form-control" required>            
-        <div class="valid-feedback">¡Ok válido!</div>
-                      <div class="invalid-feedback">Complete el campo.</div> 
-      </div>
-      <div class="col-md-6 themed-grid-col" class="form-group">Apellido:
-        <input type="text" id="apellido3" placeholder=" Ingrese Apellido" class="form-control" required>
-        <div class="valid-feedback">¡Ok válido!</div>
-                      <div class="invalid-feedback">Complete el campo.</div>  
-      </div>
-    </div>  
-					<div class="modal-footer">
+<table class="table" id="tabla">
+  
+  <tbody>
+    <tr class="fila-fija">
+      <td><input type="text" name="nombre3[]" id="nombre3" placeholder="Ingrese Nombre" class="form-control" required/></td>
+	  <td><input type="text" name="apellido3[]" id="apellido3" placeholder=" Ingrese Apellido" class="form-control" required/></td>
+      <td class="eliminar"><button  type="button" class="btn btn-warning"> - </button></td>
+       </tr>
+   
+  </tbody>
+</table>
+
+
+<div class="modal-footer">
+<button id="adicional" name="adicional" type="button" class="btn btn-warning"> + </button>
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-primary" value="Guardar datos">
+						<input type="submit"  class="btn btn-primary" value="Guardar datos">
 					</div>
-      </div>
-      </fieldset>
-      </form>
+
+</form>
     </div>
   </div>
-</div>    
+</div>   
+
+          
 <!-- Modal de Marca -->
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">
    <div class="modal-dialog" role="document">
@@ -285,6 +304,19 @@ h6 {
       <div class="col-md-12 themed-grid-col" class="form-group">Nombre de Marca: 
         <input type="text" id="nombre2" placeholder="Ingrese Nombre de Marca" class="form-control" required>            
         <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div> 
+      </div>
+      <div class="pb-3">
+    <div class="col-md-12 mb-3" class="form-group">          
+                    </div>
+    </div>
+      <div class="col-md-12 themed-grid-col" class="form-group">Estado Marca: 
+        <select id="estadom" class="form-control" class="gender" required>
+              <option disabled selected value="-1">Opción</option>
+              <option value="Activa">Activa</option>
+              <option value="Inactiva">Inactiva</option>
+            </select>
+             <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div> 
       </div>
 

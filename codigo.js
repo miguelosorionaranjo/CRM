@@ -69,6 +69,7 @@ $(document).ready(function() {
     e.preventDefault();
     const postData = {
       nombre2: $('#nombre2').val(),
+      estadom: $('#estadom').val(),
       id: $('#taskId').val()
     };
     const url = 'agregar-marca.php'  ;
@@ -96,6 +97,9 @@ $(document).ready(function() {
                   <td>${task.id}</td>
                   <td  >
                   ${task.nombre}
+                  </td>
+                  <td  >
+                  ${task.estadom}
                   </td>
                   <td>
                     <button class="task-delete btn btn-danger">
