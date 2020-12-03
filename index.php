@@ -136,8 +136,78 @@ h6 {
       <li class="nav-item">
       <a href="#exampleModal4" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Pre-Contacto</span></a>
       </li>
+      <li class="nav-item">
+      <a data-target="#myModal_selector" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Listar Contactos</span></a>
+      </li>
       </div>
     </nav>
+
+
+    <!-- Modal Selector -->
+<div id="myModal_selector" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" >
+      <h4 class="modal-title">Lista de Contactos</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" width="200px" class="container">
+        <p> Seleccion </p>
+        <select class="form-control" id="select_usuario" onchange="select_usuario();">
+        <option value=""> Seleccione </option>
+            <?php
+
+              include('database.php');
+
+              $sql_s = "SELECT * FROM usuario ORDER BY nombre3 ASC";
+            $result = mysqli_query($connection, $sql_s);
+            while ($row = mysqli_fetch_array($result)) {
+
+
+
+                $id_usuario = $row['id_usuario'];
+                $nombre3 = $row['nombre3'];
+                $apellido3 = $row['apellido3'];
+                ?>
+
+                <option value="<?php echo $id_usuario; ?>"> <?php echo "&nbsp;"; ?> <?php echo $nombre3; ?><?php echo $apellido3; ?></option>
+
+                <?php
+            }
+
+            ?>
+        </select>
+        
+       <!-- <select class="form-control" id="select_usuario" onchange="select_usuario();">
+        <?php
+  include('database.php');
+
+  $consulta3="SELECT nombre, apellido, cargo FROM precontacto ORDER BY nombre ASC";
+  $ejecutar= mysqli_query($connection,$consulta3) or die (mysqli_error($connection));
+  ?>
+
+<option value="">Opciones</option>
+  <?php foreach ($ejecutar as $opciones): ?>
+
+      <option value="<?php echo $opciones['nombre']."&nbsp;".$opciones['apellido']."&nbsp;"."(".$opciones['cargo'].")"?>"><?php echo $opciones['nombre']."&nbsp;".$opciones['apellido']."&nbsp;"."(".$opciones['cargo'].")"?></option>
+   <?php endforeach ?>
+        </select> -->
+        <div id="panel_selector"></div>
+      </div>
+      <div class="modal-footer">
+        
+      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
  <!-- Modal Nueva Campaña -->
  <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">

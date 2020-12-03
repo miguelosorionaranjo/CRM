@@ -26,6 +26,7 @@ $(document).ready(function() {
   marca();
   usuario();
   producto();
+  select_usuario();
   $('#task-result').hide();
   // Buscador
   $('#search').keyup(function() {
@@ -81,6 +82,7 @@ $(document).ready(function() {
       marca();
       usuario();
       producto();
+      select_usuario();
     });
   });
   // Lista de mARCA
@@ -120,7 +122,7 @@ $(document).ready(function() {
     const postData = {
       nombre3: $('#nombre3').val(),
       apellido3: $('#apellido3').val(),
-      id: $('#taskId').val()
+      id_usuario: $('#id_usuario').val()
     };
     const url = 'agregar-usuario.php'  ;
     console.log(postData, url);
@@ -131,6 +133,7 @@ $(document).ready(function() {
       marca();
       usuario();
       producto();
+      select_usuario();
     });
   });
 
@@ -445,5 +448,34 @@ function producto() {
       producto();
     });
   });
+
+  
+  function select_usuario()
+  { //id="select_usuario"
+    
+   var id_usuario =  $("#select_usuario").val();
+  // var nombre3 =  $("#select_usuario").val();
+   //var apellido3 =  $("#select_usuario").val();
+  // alert("Hola select = "+ID_usuario);
+  
+      var ob = {id_usuario:id_usuario};
+     // var ob = {nombre3:nombre3};
+    //  var ob = {apellido3:apellido3};
+  
+       $.ajax({
+                  type: "POST",
+                  url:"modelo_mostrar_datos.php",
+                  data: ob,
+                  beforeSend: function(objeto){
+                  
+                  },
+                  success: function(data)
+                  { 
+                   
+                   $("#panel_selector").html(data);
+              
+                  }
+               });
+  }
  // Fin del Código
 });
