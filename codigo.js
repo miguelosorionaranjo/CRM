@@ -177,6 +177,7 @@ $(document).ready(function() {
       apellido: $('#apellido').val(),
       principal: $('#principal').val(),
       celular: $('#celular').val(),
+      correop: $('#correop').val(),
       cargo: $('#cargo').val(),
       origen: $('#origen').val(),
       pais: $('#pais').val(),
@@ -231,6 +232,9 @@ $(document).ready(function() {
                   <td>${task.principal}</td>
                   <td  >
                   ${task.celular}
+                  </td>
+                  <td  >
+                  ${task.correop}
                   </td>
                   <td  >
                   ${task.cargo}
@@ -314,6 +318,7 @@ $(document).ready(function() {
       $('#apellido').val(task.apellido);
       $('#principal').val(task.principal);
       $('#celular').val(task.celular);
+      $('#correop').val(task.correop);
       $('#cargo').val(task.cargo);
       $('#origen').val(task.origen);
       $('#pais').val(task.pais);
@@ -449,7 +454,36 @@ function producto() {
     });
   });
 
-  
+  //Agregar Oportunidad
+  $('#task-oportunidad').submit(e => {
+    e.preventDefault();
+    const postData = {
+      nombreopor: $('#nombreopor').val(),
+      nombreorg: $('#nombreorg').val(),
+      nombrecon: $('#nombrecon').val(),
+      importe: $('#importe').val(),
+      tipoopor: $('#tipoopor').val(),
+      fechac: $('#fechac').val(),
+      origenpc: $('#origenpc').val(),
+      co: $('#co').val(),
+      fv: $('#fv').val(),
+      pro: $('#pro').val(),
+      buscadorvivo2: $('#buscadorvivo2').val(),
+      sp: $('#sp').val(),
+      descrip_o: $('#descrip_o').val(),
+      fechaco: $('#fechaco').val(),
+      eo: $('#eo').val(),
+      id_opor: $('#taskId').val()
+    };
+    const url =  'agregar-oportunidad.php' ;
+    console.log(postData, url);
+    $.post(url, postData, (response) => {
+      console.log(response);
+      $('#task-oportunidad').trigger('reset');
+      fetchTasks();
+    });
+  });
+
   function select_usuario()
   { //id="select_usuario"
     
@@ -477,5 +511,6 @@ function producto() {
                   }
                });
   }
+
  // Fin del Código
 });

@@ -79,7 +79,7 @@ h6 {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	<link rel="stylesheet" href="estilos.css">
     <title>CRM</title>  
@@ -114,9 +114,6 @@ h6 {
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-        <a class="nav-link" href="index.php">Inicio </a>
-      </li>
       <li class="nav-item ">
       <a href="#exampleModal"  class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Usuario</span></a>
       </li>
@@ -131,18 +128,16 @@ h6 {
       <a href="#exampleModal5" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nueva Campaña</span></a>
       </li>
       <li class="nav-item">
-      <a href="#exampleModal6" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Contacto</span></a>
-      </li>
-      <li class="nav-item">
       <a href="#exampleModal4" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Pre-Contacto</span></a>
       </li>
       <li class="nav-item">
-      <a data-target="#myModal_selector" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Listar Contactos</span></a>
+      <a href="#exampleModal6" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nueva Oportunidad</span></a>
+      </li>
+      <li class="nav-item">
+      <a href="#myModal_selector" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Pre-Contactos</span></a>
       </li>
       </div>
     </nav>
-
-
     <!-- Modal Selector -->
 <div id="myModal_selector" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -167,18 +162,14 @@ h6 {
             $result = mysqli_query($connection, $sql_s);
             while ($row = mysqli_fetch_array($result)) {
 
-
-
                 $id_usuario = $row['id_usuario'];
                 $nombre3 = $row['nombre3'];
                 $apellido3 = $row['apellido3'];
                 ?>
-
                 <option value="<?php echo $id_usuario; ?>"> <?php echo "&nbsp;"; ?> <?php echo $nombre3; ?><?php echo $apellido3; ?></option>
 
                 <?php
             }
-
             ?>
         </select>
         
@@ -206,9 +197,6 @@ h6 {
 
   </div>
 </div>
-
-
-
  <!-- Modal Nueva Campaña -->
  <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">
    <div class="modal-dialog" role="document">
@@ -228,10 +216,7 @@ h6 {
         <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div> 
       </div>
-     
     </div>  
-
-
     <div class="row">
       <div class="col-md-6 themed-grid-col" class="form-group">Asignado a:
         <select class="form-control" id="buscadorvivo" required>
@@ -241,7 +226,6 @@ h6 {
   $consulta2="SELECT nombre3, apellido3 FROM usuario ORDER BY nombre3 ASC";
   $ejecutar= mysqli_query($connection,$consulta2) or die (mysqli_error($connection));
   ?>
-
 <option value="">Opciones</option>
   <?php foreach ($ejecutar as $opciones): ?>
 
@@ -518,12 +502,12 @@ h6 {
       <div class="col-md-4 themed-grid-col" class="form-group"><br> 
         <select class="form-control" id="gender" required>
       <option value="">Opciones</option>
-      <option value="Sr">Sr.</option>
-      <option value="Sra">Sra.</option>
-      <option Value="Srita">Srita.</option>
-      <option value="Dr">Dr.</option>
-      <option value="Prof">Prof.</option>
-      <option value="Ing">Ing.</option>
+      <option value="Sr.">Sr.</option>
+      <option value="Sra.">Sra.</option>
+      <option Value="Srita.">Srita.</option>
+      <option value="Dr.">Dr.</option>
+      <option value="Prof.">Prof.</option>
+      <option value="Ing.">Ing.</option>
     </select>        
         <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div> 
@@ -541,18 +525,24 @@ h6 {
     </div>
 
     <div class="row">
-      <div class="col-md-6 themed-grid-col" class="form-group"> Número de Teléfono Principal:
+      <div class="col-md-6 themed-grid-col"  class="form-group"> Número de Teléfono Principal:
       <input type="number" id="principal" cols="30" rows="10" class="form-control" placeholder="Ingrese Número de Contrato" required>
                       <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
 
-      <div class="col-md-6 themed-grid-col" class="form-group"> Número de Celular:
-      <input type="number" id="celular" cols="30" rows="10" class="form-control" placeholder="Ingrese Número de Contrato" required>
+      <div class="col-md-6 themed-grid-col" for="celular" class="form-group"> Número de Celular:
+      <input type="tel" id="celular" cols="30" rows="10" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" placeholder="000-000-0000" required>
+                      <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+      <div class="col-md-12 themed-grid-col" class="form-group"> Correo Electrónico:
+      <input type="text" id="correop" cols="30" rows="10" class="form-control" placeholder="Ingrese Correo Electrónico" required>
                       <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
     </div>
+    
     <div class="row">
       <div class="col-md-8 themed-grid-col" class="form-group">Cargo:
       <input type="text" id="cargo" placeholder=" Contratante" class="form-control" required>
@@ -614,12 +604,12 @@ h6 {
       <div class="col-md-4 themed-grid-col" class="form-group">Ciudad:
         <select class="form-control" id="ciudad" required>
       <option value="">Opciones</option>
-      <option value="Sr">Sr.</option>
-      <option value="Sra">Sra.</option>
-      <option Value="Srita">Srita.</option>
-      <option value="Dr">Dr.</option>
-      <option value="Prof">Prof.</option>
-      <option value="Ing">Ing.</option>
+      <option value="Sr.">Sr.</option>
+      <option value="Sra.">Sra.</option>
+      <option Value="Srita.">Srita.</option>
+      <option value="Dr.">Dr.</option>
+      <option value="Prof.">Prof.</option>
+      <option value="Ing.">Ing.</option>
     </select> 
                      <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
@@ -780,66 +770,82 @@ h6 {
   </div>
 </div>    
 
-<!-- Modal Contacto -->
+<!-- Modal Oportunidad -->
 <div class="modal fade" id="exampleModal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">
    <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" >
-      <h4 class="modal-title">Agregar Contacto</h4>
+      <h4 class="modal-title">Agregar Oportunidad</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="task-form" method="post" class="needs-validation" novalidate>
-     <fieldset id="task-form" method="post" class="needs-validation" novalidate>
+      <form id="task-oportunidad" method="post" class="needs-validation" novalidate>
+     <fieldset id="task-oportunidad" method="post" class="needs-validation" novalidate>
      <div class="modal-body" width="200px" class="container">
      <div class="row">
-      <div class="col-md-4 themed-grid-col" class="form-group"><br> 
-        <select class="form-control" id="gender" required>
+      <div class="col-md-12 themed-grid-col" class="form-group">Nombre Oportunidad:
+        <input type="text" id="nombreopor" placeholder=" Ingrese Nombre Oportunidad" class="form-control" required>
+        <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 themed-grid-col" class="form-group">Nombre de la Organización:
+        <input type="text" id="nombreorg" placeholder=" Ingrese Nombre de la Organización" class="form-control" required>
+        <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 themed-grid-col" class="form-group">Nombre de Contacto:
+        <select class="form-control" id="nombrecon" required>
+        <?php
+  include('database.php');
+
+  $consulta7="SELECT gender, nombre, apellido FROM precontacto ORDER BY nombre ASC";
+  $ejecutar= mysqli_query($connection,$consulta7) or die (mysqli_error($connection));
+  ?>
+
+<option value="">Opciones</option>
+  <?php foreach ($ejecutar as $opciones): ?>
+
+      <option value="<?php echo  $opciones['gender']."&nbsp;".$opciones['nombre']."&nbsp;".$opciones['apellido']?>"><?php echo $opciones['gender']."&nbsp;".$opciones['nombre']."&nbsp;".$opciones['apellido']?></option>
+   <?php endforeach ?>
+    </select> 
+        <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+    </div>
+    <div class="pb-3">
+    <div class="col-md-12 mb-3" class="form-group">           
+                    </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 themed-grid-col" class="form-group"> Importe $:
+      <input type="number" id="importe" cols="30" rows="10" class="form-control" placeholder="Ingrese Número de Contrato" required>
+                      <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>  
+      </div>
+
+      <div class="col-md-6 themed-grid-col" class="form-group"> Tipo Oportunidad:
+        <select class="form-control" id="tipoopor" required>
       <option value="">Opciones</option>
-      <option value="Sr">Sr.</option>
-      <option value="Sra">Sra.</option>
-      <option Value="Srita">Srita.</option>
-      <option value="Dr">Dr.</option>
-      <option value="Prof">Prof.</option>
-      <option value="Ing">Ing.</option>
-    </select>        
-        <div class="valid-feedback">¡Ok válido!</div>
-                      <div class="invalid-feedback">Complete el campo.</div> 
-      </div>
-      <div class="col-md-4 themed-grid-col" class="form-group">Nombre:
-        <input type="text" id="nombre" placeholder=" Ingrese Nombre" class="form-control" required>
-        <div class="valid-feedback">¡Ok válido!</div>
-                      <div class="invalid-feedback">Complete el campo.</div>  
-      </div>
-      <div class="col-md-4 themed-grid-col" class="form-group"> Apellido: 
-        <input type="text" id="apellido" placeholder="Ingrese Apellido" class="form-control" required>            
-        <div class="valid-feedback">¡Ok válido!</div>
-                      <div class="invalid-feedback">Complete el campo.</div> 
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6 themed-grid-col" class="form-group"> Número de Teléfono Principal:
-      <input type="number" id="principal" cols="30" rows="10" class="form-control" placeholder="Ingrese Número de Contrato" required>
-                      <div class="valid-feedback">¡Ok válido!</div>
-                      <div class="invalid-feedback">Complete el campo.</div>  
-      </div>
-
-      <div class="col-md-6 themed-grid-col" class="form-group"> Número de Celular:
-      <input type="number" id="celular" cols="30" rows="10" class="form-control" placeholder="Ingrese Número de Contrato" required>
-                      <div class="valid-feedback">¡Ok válido!</div>
+      <option value="Negocio Existente">Negocio Existente</option>
+      <option value="Nuevo Negocio">Nuevo Negocio</option>
+    </select> 
+                    <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
     </div>
     <div class="row">
-      <div class="col-md-8 themed-grid-col" class="form-group">Cargo:
-      <input type="text" id="cargo" placeholder=" Contratante" class="form-control" required>
+      <div class="col-md-6 themed-grid-col" class="form-group">Fecha Estimada de Cierre:
+      <input type="date" id="fechac"  class="form-control" required>
                       <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
-      <div class="col-md-4 themed-grid-col" class="form-group">Origen Pre-Contacto:
-        <select class="form-control" id="origen" required>
+      <div class="col-md-6 themed-grid-col" class="form-group">Origen Pre-Contacto:
+        <select class="form-control" id="origenpc" required>
       <option value="">Opciones</option>
       <option value="Pagina Web">Página Web</option>
       <option value="Sitio Web">Sitio Web</option>
@@ -864,118 +870,36 @@ h6 {
     <div class="col-md-12 mb-3" class="form-group">           
                     </div>
     </div>
-    
-    <div class="row">
-      <div class="col-md-4 themed-grid-col" class="form-group">Pais:
-        <select class="form-control" id="pais" required>
-      <option value="">Opciones</option>
-      <option value="Colombia">Colombia.</option>
-      <option value="Mexico">México.</option>
-      <option Value="Peru">Perú.</option>
-      <option value="Rusia">Rusia.</option>
-    </select> 
-    <div class="valid-feedback">¡Ok válido!</div>
-                      <div class="invalid-feedback">Complete el campo.</div>  
-      </div>
-      <div class="col-md-4 themed-grid-col" class="form-group">Departamento:
-        <select class="form-control" id="departamento" required>
-      <option value="">Opciones</option>
-      <option value="Sr">Sr.</option>
-      <option value="Sra">Sra.</option>
-      <option Value="Srita">Srita.</option>
-      <option value="Dr">Dr.</option>
-      <option value="Prof">Prof.</option>
-      <option value="Ing">Ing.</option>
-    </select> 
-                    <div class="valid-feedback">¡Ok válido!</div>
-                      <div class="invalid-feedback">Complete el campo.</div>  
-      </div>
-      <div class="col-md-4 themed-grid-col" class="form-group">Ciudad:
-        <select class="form-control" id="ciudad" required>
-      <option value="">Opciones</option>
-      <option value="Sr">Sr.</option>
-      <option value="Sra">Sra.</option>
-      <option Value="Srita">Srita.</option>
-      <option value="Dr">Dr.</option>
-      <option value="Prof">Prof.</option>
-      <option value="Ing">Ing.</option>
-    </select> 
-                     <div class="valid-feedback">¡Ok válido!</div>
-                      <div class="invalid-feedback">Complete el campo.</div>  
-      </div>
-    </div>
-
-    
-    <div class="pb-3">
-    <div class="col-md-12 mb-3" class="form-group">           
-                    </div>
-    </div>
+   
 
     <div class="row">
-      <div class="col-md-12 themed-grid-col" class="form-group">Página:
-      <input type="text" id="pagina" placeholder="Ingrese URL de Página" class="form-control" required>
+      <div class="col-md-12 themed-grid-col" class="form-group">Campaña Origen:
+      <input type="text" id="co" placeholder="Ingrese Origen de Campaña" class="form-control" required>
                         <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>   
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6 themed-grid-col" class="form-group">Nombre de la Empresa:
-      <input type="text" id="empresa" placeholder=" Descripción del Recorrido" class="form-control" required>
-      <div class="valid-feedback">¡Ok válido!</div>
-      <div class="invalid-feedback">Complete el campo.</div>  
-      </div>
-      <div class="col-md-6 themed-grid-col" class="form-group">Industria:
-        <select class="form-control" id="industria" required>
-      <option value="">Opciones</option>
-      <option value="Sr">Sr.</option>
-      <option value="Sra">Sra.</option>
-      <option Value="Srita">Srita.</option>
-      <option value="Dr">Dr.</option>
-      <option value="Prof">Prof.</option>
-      <option value="Ing">Ing.</option>
-    </select> 
-   
-    <div class="valid-feedback">¡Ok válido!</div>
-      <div class="invalid-feedback">Complete el campo.</div>  
-      </div>
-      <div class="col-md-12 themed-grid-col" class="form-group">Dirección:
-        <textarea class="form-control" onkeyup="dirr(this);" maxlength="201" id="direccion" placeholder="Ingrese Dirección"></textarea>
-      <div class="valid-feedback">¡Ok válido!</div>
-      <div class="invalid-feedback">Complete el campo.</div>  
-      </div>
-    </div>
+ 
 
     <div class="pb-3">
     <div class="col-md-12 mb-3" class="form-group">           
                     </div>
     </div>
 
-
-
     <div class="row">
-      <div class="col-md-6 themed-grid-col" class="form-group"> Producto o Servicio:
-      <input type="text" id="ps" cols="30" rows="10" class="form-control" placeholder="Ingrese Número de Contrato" required>
+      <div class="col-md-6 themed-grid-col" class="form-group"> Fase de Venta:
+        <select class="form-control" id="fv" required>
+      <option value="">Opciones</option>
+      <option value="Cotización">Cotización</option>
+      <option value="Cerrada-Ganada">Cerrada-Ganada</option>
+      <option value="Cerrada-Perdida">Cerrada-Perdida</option>
+    </select> 
                       <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
 
-      <div class="col-md-6 themed-grid-col" class="form-group"> Marca:
-  
-        <select class="form-control" id="buscadormarca" required>
-        <?php
-  include('database.php');
-
-  $consulta="SELECT * FROM marca ORDER BY nombre2 ASC";
-  $ejecutar= mysqli_query($connection,$consulta) or die (mysqli_error($connection));
-  ?>
-
-<option value="">Opciones</option>
-  <?php foreach ($ejecutar as $opciones): ?>
-
-      <option value="<?php echo $opciones['nombre2']?>"><?php echo $opciones['nombre2']?></option>
-   <?php endforeach ?>
-    </select> 
- 
+      <div class="col-md-6 themed-grid-col" class="form-group"> Probabilidad %:
+      <input type="number" id="pro" placeholder="Ingrese % de Probabilidad" class="form-control" required>
                    <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
@@ -984,12 +908,12 @@ h6 {
 
     <div class="row">
       <div class="col-md-6 themed-grid-col" class="form-group">Asignado a:
-        <select class="form-control" id="buscadorvivo" required>
+        <select class="form-control" id="buscadorvivo2" required>
         <?php
   include('database.php');
 
-  $consulta2="SELECT nombre3, apellido3 FROM usuario ORDER BY nombre3 ASC";
-  $ejecutar= mysqli_query($connection,$consulta2) or die (mysqli_error($connection));
+  $consulta9="SELECT nombre3, apellido3 FROM usuario ORDER BY nombre3 ASC";
+  $ejecutar= mysqli_query($connection,$consulta9) or die (mysqli_error($connection));
   ?>
 
 <option value="">Opciones</option>
@@ -1003,16 +927,12 @@ h6 {
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
 
-      <div class="col-md-6 themed-grid-col" class="form-group"> Pre-Contacto:
+      <div class="col-md-6 themed-grid-col" class="form-group"> Siguiente Paso:
   
-        <select class="form-control" id="precontacto" required>
+        <select class="form-control" id="sp" required>
       <option value="">Opciones</option>
-      <option value="Nuevo">Nuevo.</option>
-      <option value="No Interesado">No Interesado.</option>
-      <option Value="Contactados Chat">Contactados Chat.</option>
-      <option value="Intentando Contactar">Intentando Contactar.</option>
-      <option value="Verificar Datos">Verificar Datos.</option>
-      <option value="Descargato">Descartado.</option>
+      <option value="Enviar Cotización">Enviar Cotización</option>
+      <option value="Cerrar Compra">Cerrar Compra</option>
     </select> 
  
                    <div class="valid-feedback">¡Ok válido!</div>
@@ -1024,7 +944,7 @@ h6 {
     <div class="row">
       <div class="col-md-12 themed-grid-col" class="form-group"> Descripción:
      
-        <textarea class="form-control" onkeyup="dirr(this);" maxlength="201" id="descripcion" placeholder="Ingrese descripción"></textarea>                 
+        <textarea class="form-control" onkeyup="dirr(this);" maxlength="201" id="descrip_o" placeholder="Ingrese descripción"></textarea>                 
         <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
@@ -1037,12 +957,15 @@ h6 {
     </div>
 
     <div class="row">
-      <div class="col-md-6 themed-grid-col" class="form-group">Fecha de Creación:
-      <input type="datetime" id="fecha"  class="form-control" class="fecha" value="<?= $fecha?>"  disabled="disabled">
+      <div class="col-md-6 themed-grid-col" class="form-group">Fecha de Creación Oportunidad:
+      <input type="datetime" id="fechaco"  class="form-control" class="fecha" value="<?= $fecha?>"  disabled="disabled">
       </div>
-
-      <div class="col-md-6 themed-grid-col" class="form-group">Fecha de Modificación:
-      <input type="datetime" id="fechamod"  class="form-control" class="fecha" value="<?= $fecha?>"  disabled="disabled">
+      <div class="col-md-6 themed-grid-col" class="form-group">Estado Oportunidad:
+        <select class="form-control" id="eo" required>
+      <option value="">Opciones</option>
+      <option value="Activa">Activa</option>
+      <option value="Inactiva">Inactiva</option>
+    </select> 
       </div>
     </div>
 <br>
@@ -1104,12 +1027,121 @@ h6 {
     Oportunidades
   </div>
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+      <table class="table table-bordered">
+	<tr>
+    <th> # </th>
+		<th> Nombre Oportunidad </th>
+		<th> Nombre de la Organización </th>
+		
+		<th> </th>
+	</tr>
+<?php
+
+include('database.php');
+
+$query = "SELECT * from oportunidad WHERE eo='Activa'";
+$result = mysqli_query($connection, $query);
+  if(!$result) {
+    die('Query Failed'. mysqli_error($connection));
+  }
+$i =0;
+while($row = mysqli_fetch_array($result)) {
+	$i++;
+	$id_opor = $row['id_opor'];
+	$nombreopor = $row['nombreopor'];
+	$nombreorg = $row['nombreorg'];
+	?>
+     <tr>
+     	<td> <?php echo $i; ?></td>
+     	<td> <?php echo $nombreopor; ?></td>
+     	<td> <?php echo $nombreorg; ?></td>
+     	<td class="col-lg-1"> 
+     		 
+     		 <button class="btn btn-primary btn-xs" style="width: 100%;" data-toggle="modal" data-target="#myModal_consultaro" onclick="btn_ver('<?php echo $id_opor; ?>');"> Ver </button>
+            </td>
+            
+            <td>
+            <a type="button" class="btn btn-warning btn-sm fun" data-toggle="modal" data-target="#editar<?php echo $row['id_opor'];?>">
+              <span class="glyphicon glyphicon-edit"></span>
+            </a>
+            <?php include("mostrar-oportunidad.php");?>
+</td>
+     </tr>
+	<?php
+}
+
+?>
+</table>
       </div>
     </div>
   </div>
+
+  <!-- Modal Consulta-->
+<div id="myModal_consultaro" class="modal fade"  id="editar<?php echo $row['id_opor'];?>" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header" >
+      <h4 class="modal-title">Información Oportunidad</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="task-oportunidad" method="post" class="needs-validation" novalidate>
+     <fieldset id="task-oportunidad" method="post" class="needs-validation" novalidate>
+     <div class="modal-body" width="200px" class="container">
+     <table class="table table-bordered">
+	<tr>
+    <th> # </th>
+		<th> Nombre Oportunidad </th>
+		<th> Nombre de la Organización </th>
+		<th> Importe $ </th>
+	
+  </tr>
+  
+
+  
+<?php
+
+include('database.php');
+
+$query = "SELECT * from oportunidad where id_opor ='$id_opor' ";
+$result = mysqli_query($connection, $query);
+  if(!$result) {
+    die('Query Failed'. mysqli_error($connection));
+  }
+$i =0;
+while($row = mysqli_fetch_array($result)) {
+	$i++;
+	$id_opor = $row['id_opor'];
+	$nombreopor = $row['nombreopor'];
+  $nombreorg = $row['nombreorg'];
+  $importe = $row['importe'];
+	?>
+     <tr>
+     	<td> <?php echo $i; ?></td>
+     	<td> <?php echo $nombreopor; ?></td>
+     	<td> <?php echo $nombreorg; ?></td>
+     	<td> <?php echo $importe; ?></td>
+     </tr>
+	<?php
+}
+
+?>
+</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"> Cerrar </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
   <div class="col-sm-6">
     <div class="card">
     <div class="card-header" align="center">
