@@ -1,30 +1,33 @@
 <?php
-
- $id_usuario = $_POST['id_usuario'];
+error_reporting(0);
+ $id = $_POST['id'];
 
  include('database.php');
 
-	$query =  "SELECT * FROM usuario order by  id_usuario ='$id_usuario'";
+	$query = ( "SELECT * FROM precontacto WHERE id ='$id'");
 	$result = mysqli_query($connection, $query);
 	while ($row = mysqli_fetch_array($result)) {
 		
-		$nombre3 = $row['nombre3'];
-		$apellido3 = $row['apellido3'];
-	
+		$nombre = $row['nombre'];
+		$apellido = $row['apellido'];
+		$cargo = $row['cargo'];
 }
 ?>
 <h4> Datos del usuario para examinar </h4>
 <table class="table table-condensed">
 	<tr>
 		<td> Nombre : </td>
-		<td> <?php echo $nombre3; ?></td>
+		<td> <?php echo $nombre; ?></td>
 	</tr>
 
 	<tr>
 		<td> Apellidos : </td>
-		<td> <?php echo $apellido3; ?></td>
+		<td> <?php echo $apellido; ?></td>
 	</tr>
-
+	<tr>
+		<td> Cargo : </td>
+		<td> <?php echo $cargo; ?></td>
+	</tr>
 
 </table>
 <?php

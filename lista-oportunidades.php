@@ -1,6 +1,6 @@
 <?php
   include('database.php');
-  $query = "SELECT * from oportunidad ";
+  $query = "SELECT * from oportunidad  ";
   $result = mysqli_query($connection, $query);
   if(!$result) {
     die('Query Failed'. mysqli_error($connection));
@@ -10,7 +10,8 @@
     $json[] = array(
         'nombreopor' => $row['nombreopor'],
       'nombreorg' => $row['nombreorg'],
-      'id' => $row['id']
+      'eo' => $row['eo'],
+      'id_opor' => $row['id_opor']
     );
   }
   $jsonstring = json_encode($json);

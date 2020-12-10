@@ -13,6 +13,7 @@
       'apellido' => $row['apellido'],
       'principal' => $row['principal'],
       'celular' => $row['celular'],
+      'correop' => $row['correop'],
       'cargo' => $row['cargo'],
       'origen' => $row['origen'],
       'pais' => $row['pais'],

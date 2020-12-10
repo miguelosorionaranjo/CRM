@@ -1,3 +1,4 @@
+
 // Validaciones function Required
 (function() {
   'use strict';
@@ -26,7 +27,11 @@ $(document).ready(function() {
   marca();
   usuario();
   producto();
-  select_usuario();
+  select_precontacto();
+  campana();
+  opor();
+  oportunidades();
+  campanas();
   $('#task-result').hide();
   // Buscador
   $('#search').keyup(function() {
@@ -82,7 +87,11 @@ $(document).ready(function() {
       marca();
       usuario();
       producto();
-      select_usuario();
+      select_precontacto();
+      opor();
+      campana();
+      oportunidades();
+      campanas();
     });
   });
   // Lista de mARCA
@@ -133,7 +142,8 @@ $(document).ready(function() {
       marca();
       usuario();
       producto();
-      select_usuario();
+      select_precontacto();
+      opor();
     });
   });
 
@@ -177,6 +187,7 @@ $(document).ready(function() {
       apellido: $('#apellido').val(),
       principal: $('#principal').val(),
       celular: $('#celular').val(),
+      correop: $('#correop').val(),
       cargo: $('#cargo').val(),
       origen: $('#origen').val(),
       pais: $('#pais').val(),
@@ -231,6 +242,9 @@ $(document).ready(function() {
                   <td>${task.principal}</td>
                   <td  >
                   ${task.celular}
+                  </td>
+                  <td  >
+                  ${task.correop}
                   </td>
                   <td  >
                   ${task.cargo}
@@ -314,6 +328,7 @@ $(document).ready(function() {
       $('#apellido').val(task.apellido);
       $('#principal').val(task.principal);
       $('#celular').val(task.celular);
+      $('#correop').val(task.correop);
       $('#cargo').val(task.cargo);
       $('#origen').val(task.origen);
       $('#pais').val(task.pais);
@@ -435,7 +450,7 @@ function producto() {
       webc: $('#webc').val(),
       estadoc: $('#estadoc').val(),
       descripcionc: $('#descripcionc').val(),
-      id: $('#taskId').val()
+      idc: $('#taskId').val()
     };
     const url = 'agregar-campana.php'  ;
     console.log(postData, url);
@@ -446,36 +461,213 @@ function producto() {
       marca();
       usuario();
       producto();
+
     });
   });
 
+  //Agregar Oportunidad
+  $('#task-oportunidad').submit(e => {
+    e.preventDefault();
+    const postData = {
+      nombreopor: $('#nombreopor').val(),
+      nombreorg: $('#nombreorg').val(),
+      nombrecon: $('#nombrecon').val(),
+      importe: $('#importe').val(),
+      tipoopor: $('#tipoopor').val(),
+      fechac: $('#fechac').val(),
+      origenpc: $('#origenpc').val(),
+      co: $('#co').val(),
+      fv: $('#fv').val(),
+      pro: $('#pro').val(),
+      buscadorvivo2: $('#buscadorvivo2').val(),
+      sp: $('#sp').val(),
+      descrip_o: $('#descrip_o').val(),
+      fechaco: $('#fechaco').val(),
+      eo: $('#eo').val(),
+      id_opor: $('#taskId').val()
+    };
+    const url =  'agregar-oportunidad.php' ;
+    console.log(postData, url);
+    $.post(url, postData, (response) => {
+      console.log(response);
+      $('#task-oportunidad').trigger('reset');
+      fetchTasks();
+    });
+  });
+
+function select_precontacto()
+{ //id="select_usuario"
   
-  function select_usuario()
-  { //id="select_usuario"
-    
-   var id_usuario =  $("#select_usuario").val();
-  // var nombre3 =  $("#select_usuario").val();
-   //var apellido3 =  $("#select_usuario").val();
-  // alert("Hola select = "+ID_usuario);
-  
-      var ob = {id_usuario:id_usuario};
-     // var ob = {nombre3:nombre3};
-    //  var ob = {apellido3:apellido3};
-  
-       $.ajax({
-                  type: "POST",
-                  url:"modelo_mostrar_datos.php",
-                  data: ob,
-                  beforeSend: function(objeto){
+ var id =  $("#select_precontacto").val();
+ 
+// alert("Hola select = "+ID_usuario);
+
+    var ob = {id:id};
+
+     $.ajax({
+                type: "POST",
+                url:"modelo_mostrar_datos.php",
+                data: ob,
+                beforeSend: function(objeto){
+                
+                },
+                success: function(data)
+                { 
+                 
+                 $("#panel_selector").html(data);
+            
+                }
+             });
+}
+
+  // Lista oportunidades activas
+  function opor() {
+    $.ajax({
+      url: 'lista-oportunidad.php',
+      type: 'GET',
+      success: function(response) {
+        const opor = JSON.parse(response);
+        let template = '';
+        opor.forEach(task => {
+          template += `
+                  <tr taskId="${task.id_opor}">
+                  <td>${task.id_opor}</td>
+                  <td  >
+                  ${task.nombreopor}
+                  </td>
                   
-                  },
-                  success: function(data)
-                  { 
-                   
-                   $("#panel_selector").html(data);
-              
-                  }
-               });
+                  <td  >
+                  ${task.nombreorg}
+                  </td>
+                  <td>
+                  
+     		 <button class="btn btn-primary btn-xs" style="width: 100%;" data-toggle="modal" data-target="#myModal_consultaro" onclick="btn_ver('<?php echo $id_opor; ?>');"> Ver </button>
+            
+                  </td>
+                  </tr>
+                `
+        });
+        $('#opor').html(template);
+      }
+    });
   }
+
+    // Lista oportunidades cambio de estado
+    function oportunidades() {
+      $.ajax({
+        url: 'lista-oportunidades.php',
+        type: 'GET',
+        success: function(response) {
+          const oportunidades = JSON.parse(response);
+          let template = '';
+          oportunidades.forEach(task => {
+            template += `
+                    <tr taskId="${task.id_opor}">
+                    <td>${task.id_opor}</td>
+                    <td  >
+                    ${task.nombreopor}
+                    </td>
+                    
+                    <td  >
+                    ${task.nombreorg}
+                    </td>
+                   
+                    <td>
+                    <button class="task-activa btn btn-success-activa ">
+                    ${task.eo}
+                    </button>
+                    </td>
+                    </tr>
+                  `
+          });
+          $('#oportunidades').html(template);
+        }
+      });
+    }
+    //Cambiar estado Oportunidad
+    $(document).on('click', '.task-activa', (e) => {
+      if(confirm('¿Estás seguro de que quieres activarlo?')) {
+        const element = $(this)[0].activeElement.parentElement.parentElement;
+        const id_opor = $(element).attr('taskId');
+        $.post('task-activa.php', {id_opor}, (response) => {
+          fetchTasks();
+        });
+      }
+    });
+     //Cambiar estado Campañas
+     $(document).on('click', '.task-activa-campana', (e) => {
+      if(confirm('¿Estás seguro de que quieres activarlo?')) {
+        const element = $(this)[0].activeElement.parentElement.parentElement;
+        const idc = $(element).attr('taskId');
+        $.post('task-activa-campanas.php', {idc}, (response) => {
+          fetchTasks();
+        });
+      }
+    });
+   // Lista Campañas activas
+   function campana() {
+    $.ajax({
+      url: 'lista-campanas.php',
+      type: 'GET',
+      success: function(response) {
+        const campana = JSON.parse(response);
+        let template = '';
+        campana.forEach(task => {
+          template += `
+                  <tr taskId="${task.idc}">
+                  <td>${task.idc}</td>
+                  <td  >
+                  ${task.nombrec}
+                  </td>
+                  
+                  <td  >
+                  ${task.tipoc}
+                  </td>
+                  
+                  </tr>
+                `
+        });
+        $('#campana').html(template);
+      }
+    });
+  }
+  // Lista Camapañas cambio de estado
+  function campanas() {
+    $.ajax({
+      url: 'lista-campanass.php',
+      type: 'GET',
+      success: function(response) {
+        const campanas = JSON.parse(response);
+        let template = '';
+        campanas.forEach(task => {
+          template += `
+                  <tr taskId="${task.idc}">
+                  <td>${task.idc}</td>
+                  <td  >
+                  ${task.nombrec}
+                  </td>
+                  
+                  <td  >
+                  ${task.descripcionc}
+                  </td>
+                 
+                  <td>
+                  <button class="task-activa-campana btn btn-success-activa ">
+                  ${task.estadoc}
+                  </button>
+                  </td>
+                  </tr>
+                `
+        });
+        $('#campanas').html(template);
+      }
+    });
+  }
+ 
  // Fin del Código
 });
+//<td>
+                  
+                //  <button class="btn btn-primary btn-xs" style="width: 100%;" data-toggle="modal" data-target="#myModal_consultarc" onclick="btn_verc('<?php echo $idc; ?>');"> Ver </button>
+                    
+                        //  </td>

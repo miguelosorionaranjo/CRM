@@ -7,6 +7,7 @@ if(isset($_POST['nombre'])) {
   $task_apellido = $_POST['apellido'];
   $task_principal = $_POST['principal'];
   $task_celular = $_POST['celular'];
+  $task_correop = $_POST['correop'];
   $task_cargo = $_POST['cargo'];
   $task_origen = $_POST['origen'];
   $task_pais = $_POST['pais'];
@@ -27,6 +28,7 @@ if(isset($_POST['nombre'])) {
                                     apellido, 
                                     principal, 
                                     celular, 
+                                    correop,
                                     cargo, 
                                     origen,
                                     pais, 
@@ -47,7 +49,8 @@ if(isset($_POST['nombre'])) {
                                     '$task_nombre', 
                                     '$task_apellido', 
                                     '$task_principal', 
-                                    '$task_celular', 
+                                    '$task_celular',
+                                    '$task_correop',  
                                     '$task_cargo', 
                                     '$task_origen',
                                     '$task_pais', 
@@ -68,11 +71,6 @@ if(isset($_POST['nombre'])) {
     die('Query Failed.');
   }
   echo "Registrado con Éxito";  
-#if (fuec: $('#fuec').length==0){
-#  alert("Ingrese Número de FUEC");
-#}
-#else (fuec: $('#fuec').length==0){
- # alert("Ingrese Número de FUEC");
-#}
+
 }
 ?>

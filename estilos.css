@@ -61,7 +61,7 @@ ul {
   font-family: Lato, sans-serif;
 }
 h1{
-  background: #14cc70;  /* fallback for old browsers */
+  background: #109653;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #0feeab, #13e985);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #69e9c3, #05643c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
   color:white;
@@ -75,7 +75,7 @@ h1{
   }
   .btn-success-activa{
     width: 100%;
-    background-color: rgba(11, 109, 11, 0.863);
+    background-color: rgba(52, 189, 52, 0.863);
     color:white;
   }
   .modal-header{
@@ -90,4 +90,3 @@ h1{
       background: linear-gradient(to right, #00aae4, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
       color:white;
       }
-  
