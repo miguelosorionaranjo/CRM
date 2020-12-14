@@ -1,4 +1,3 @@
-
 // Validaciones function Required
 (function() {
   'use strict';
@@ -31,6 +30,7 @@ $(document).ready(function() {
   opor();
   oportunidades();
   campanas();
+  
   $('#task-result').hide();
   // Buscador
   $('#search').keyup(function() {
@@ -513,7 +513,7 @@ function producto() {
                   </td>
                   <td>
                   
-     		 <button class="btn btn-primary btn-xs" style="width: 100%;" data-toggle="modal" data-target="#myModal_consultaro" onclick="btn_ver('<?php echo $id_opor; ?>');"> Ver </button>
+              <button class="btn btn-primary btn-xs" style="width: 100%;" data-toggle="modal" data-target="#myModal_consultaro" onclick="btn_ver('<?php echo $id_opor; ?>');"> Ver </button>
             
                   </td>
                   </tr>
@@ -576,8 +576,10 @@ function producto() {
         });
       }
     });
-   // Lista Campañas activas
-   function pre() {
+  
+
+  // Lista pre contactos Index
+  function pre() {
     $.ajax({
       url: 'lista-pre.php',
       type: 'GET',
@@ -589,15 +591,22 @@ function producto() {
                   <tr taskId="${task.id}">
                   <td>${task.id}</td>
                   <td  >
-                  ${task.nombre}
+                  ${task.gender}
                   </td>
-                  
-                  <td  >
-                  ${task.apellido}
+                  <td>
+                  <a href="#" class="task-item">
+                    ${task.nombre} 
+                  </a>
+                  </td>
+                  <td>
+                  <a href="#" class="task-item">
+                    ${task.apellido} 
+                  </a>
                   </td>
                   <td>${task.empresa}</td>
                   <td>${task.precontacto}</td>
                   <td>${task.fecha}</td>
+                 
                   </tr>
                 `
         });
@@ -605,6 +614,10 @@ function producto() {
       }
     });
   }
+
+
+
+
   // Lista Camapañas cambio de estado
   function campanas() {
     $.ajax({
@@ -640,8 +653,3 @@ function producto() {
  
  // Fin del Código
 });
-//<td>
-                  
-                //  <button class="btn btn-primary btn-xs" style="width: 100%;" data-toggle="modal" data-target="#myModal_consultarc" onclick="btn_verc('<?php echo $idc; ?>');"> Ver </button>
-                    
-                        //  </td>

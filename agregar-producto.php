@@ -11,10 +11,11 @@
     $task_cantidad = $_POST['cantidad'];
     $task_categoria = $_POST['categoria'];
     $task_proveedor = $_POST['proveedor'];
-    $task_imagen = $_FILES['imagen']['name'];
+    $imagen = $_FILES['imagen']['name'];
 
-    $tipo = $_FILES['imagen']['type'];
-    $tamagno = $_FILES['imagen']['size'];
+    if(isset($imagen) && $imagen != ""){
+      $tipo = $_FILES['imagen']['type'];
+      $temp  = $_FILES['imagen']['tmp_name'];
  //   $dir_subida = 'imagenes/';
   //  $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
   //  move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
@@ -33,8 +34,8 @@
 				|| ($_FILES["file"]["type"] == "image/png")));
       {
     
-        $task_imagen = round(microtime(true)) . '.' . end($ext);
-        move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta_destino.$task_imagen);
+        $imagen = round(microtime(true)) . '.' . end($ext);
+        move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta_destino.$imagen);
       }
     }
     
@@ -83,7 +84,7 @@
                                     '$task_cantidad', 
                                     '$task_categoria', 
                                     '$task_proveedor', 
-                                    '$task_imagen')";
+                                    '$imagen')";
   $result = mysqli_query($connection, $query);
  // move_uploaded_file($temp,'imagenes/'.$imagen);
  // header('location:index.php');
@@ -103,6 +104,6 @@
 
  // echo  $_FILES['imagen']['type'];
 }
-
+  }
 
 ?>

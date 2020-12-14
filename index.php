@@ -80,7 +80,7 @@ h6 {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link rel="stylesheet" href="estilos.css">
@@ -108,7 +108,6 @@ h6 {
     $fecha=date("Y-m-d ");
          ?>
 <!-- NAVIGATION  -->
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
@@ -143,9 +142,7 @@ h6 {
       <a href="#exampleModal8" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Campañas</span></a>
       </li>
       </ul>
-      <span class="navbar-text">
-        Navbar text with an inline element
-      </span>
+      
     </div>
   </div>
 </nav>
@@ -185,7 +182,50 @@ h6 {
     </nav>
     -->
     <!-- Modal Selector -->
+<div id="myModal_selector" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" >
+      <h4 class="modal-title">Lista de Contactos</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" width="200px" class="container">
+        <p> Seleccion </p>
+        <select class="form-control" id="select_precontacto" onchange="select_precontacto();">
+        <option value=""> Seleccione </option>
+            <?php
+
+              include('database.php');
+
+              $sql = "SELECT * FROM precontacto ORDER BY nombre ASC";
+            $result = mysqli_query($connection, $sql);
+            while ($row = mysqli_fetch_array($result)) {
+
+                $id = $row['id'];
+                $nombre = $row['nombre'];
+                ?>
+                <option value="<?php echo $id; ?>"> <?php echo "&nbsp;"; ?> <?php echo $nombre; ?></option>
+
+                <?php
+            }
+            ?>
+        </select>
+      
+      
+        <div id="panel_selector"></div>
+      </div>
+      <div class="modal-footer">
+        
+      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
+      </div>
+    </div>
+
+  </div>
+</div>
  <!-- Modal Nueva Campaña -->
  <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">
    <div class="modal-dialog" role="document">
@@ -385,7 +425,7 @@ h6 {
       </div>
       <form id="task-producto" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
      <!-- <form   id="task-form" method="post" action="." oninput="range_control_value.value = range_control.valueAsNumber" class="ventanas" name="formValidation"> -->
-     <fieldset id="task-producto" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+     <fieldset id="task-producto" method="post" class="needs-validation" novalidate>
       <div class="modal-body" width="200px" class="container">
       <div class="row">
       <div class="col-md-6 themed-grid-col" class="form-group">Nombre del Producto:
@@ -413,7 +453,7 @@ h6 {
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
       <div class="col-md-4 themed-grid-col" class="form-group">Total:
-        <input type="number" id="total"  class="form-control">
+        <input type="number" id="total"  class="form-control" disabled="disabled">
         <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
@@ -455,7 +495,7 @@ h6 {
 
     <div class="row">
       <div class="col-md-12 themed-grid-col" class="form-group">Imagen del Producto:
-        <input type="file" class="form-control" name="file" id="imagen" required>
+        <input type="file" class="form-control"  id="imagen" required>
                       <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
@@ -1099,7 +1139,7 @@ h6 {
     </div>
   </div>
 
-  <!-- Modal Consulta Oportunidad-->
+   <!-- Modal Consulta Oportunidad-->
 <div id="myModal_consultaro" class="modal fade"  id="editar<?php echo $row['id_opor'];?>" role="dialog">
   <div class="modal-dialog">
 
@@ -1111,8 +1151,6 @@ h6 {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="task-oportunidad" method="post" class="needs-validation" novalidate>
-     <fieldset id="task-oportunidad" method="post" class="needs-validation" novalidate>
      <div class="modal-body" width="200px" class="container">
      <table class="table table-bordered">
 	<tr>
@@ -1127,7 +1165,7 @@ h6 {
 
 include('database.php');
 
-$query = "SELECT * from oportunidad where id_opor ='$id_opor' ";
+$query = "SELECT * from oportunidad WHERE id_opor ='$id_opor' ";
 $result = mysqli_query($connection, $query);
   if(!$result) {
     die('Query Failed'. mysqli_error($connection));
@@ -1160,64 +1198,7 @@ while($row = mysqli_fetch_array($result)) {
   </div>
 </div>
 
- <!-- Modal Consulta Campanas-->
- <div id="myModal_consultarc" class="modal fade"  id="editar<?php echo $row['idc'];?>" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-    <div class="modal-header" >
-      <h4 class="modal-title">Información Campañas</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form id="task-campanas" method="post" class="needs-validation" novalidate>
-     <fieldset id="task-campanas" method="post" class="needs-validation" novalidate>
-     <div class="modal-body" width="200px" class="container">
-     <table class="table table-bordered">
-	<tr>
-    <th> # </th>
-		<th> Nombre campaña </th>
-		<th> Tipo de Campaña </th>
-		<th> Descripción </th>
-	
-  </tr>
-<?php
-error_reporting(0);
-include('database.php');
-
-$query = "SELECT * from campana where idc ='$idc' ";
-$result = mysqli_query($connection, $query);
-  if(!$result) {
-    die('Query Failed'. mysqli_error($connection));
-  }
-$i =0;
-while($row = mysqli_fetch_array($result)) {
-	$i++;
-	$idc = $row['idc'];
-	$nombrec = $row['nombrec'];
-  $tipoc = $row['tipoc'];
-  $descripcionc = $row['descripcionc'];
-	?>
-     <tr>
-     	<td> <?php echo $i; ?></td>
-     	<td> <?php echo $nombrec; ?></td>
-     	<td> <?php echo $tipoc; ?></td>
-     	<td> <?php echo $descripcionc; ?></td>
-     </tr>
-	<?php
-}
-
-?>
-</table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal"> Cerrar </button>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Lista Oportunidades Index-->
   <div class="col-sm-6">
     <div class="card">
     <div class="card-header" align="center">
@@ -1241,7 +1222,6 @@ while($row = mysqli_fetch_array($result)) {
   </div>
 </div>
 <br>
-
 
 <div class="col-sm-12">
     <div class="card">
