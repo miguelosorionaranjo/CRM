@@ -27,8 +27,7 @@ $(document).ready(function() {
   marca();
   usuario();
   producto();
-  select_precontacto();
-  campana();
+  pre();
   opor();
   oportunidades();
   campanas();
@@ -87,9 +86,8 @@ $(document).ready(function() {
       marca();
       usuario();
       producto();
-      select_precontacto();
       opor();
-      campana();
+      pre();
       oportunidades();
       campanas();
     });
@@ -142,7 +140,6 @@ $(document).ready(function() {
       marca();
       usuario();
       producto();
-      select_precontacto();
       opor();
     });
   });
@@ -389,6 +386,7 @@ $('#task-producto').submit(e => {
     codigo: $('#codigo').val(),
     precio: $('#precio').val(),
     iva: $('#iva').val(),
+    total: $('#total').val(),
     cantidad: $('#cantidad').val(),
     categoria: $('#categoria').val(),
     proveedor: $('#proveedor').val(),
@@ -494,32 +492,6 @@ function producto() {
       fetchTasks();
     });
   });
-
-function select_precontacto()
-{ //id="select_usuario"
-  
- var id =  $("#select_precontacto").val();
- 
-// alert("Hola select = "+ID_usuario);
-
-    var ob = {id:id};
-
-     $.ajax({
-                type: "POST",
-                url:"modelo_mostrar_datos.php",
-                data: ob,
-                beforeSend: function(objeto){
-                
-                },
-                success: function(data)
-                { 
-                 
-                 $("#panel_selector").html(data);
-            
-                }
-             });
-}
-
   // Lista oportunidades activas
   function opor() {
     $.ajax({
@@ -605,29 +577,31 @@ function select_precontacto()
       }
     });
    // Lista Campañas activas
-   function campana() {
+   function pre() {
     $.ajax({
-      url: 'lista-campanas.php',
+      url: 'lista-pre.php',
       type: 'GET',
       success: function(response) {
-        const campana = JSON.parse(response);
+        const pre = JSON.parse(response);
         let template = '';
-        campana.forEach(task => {
+        pre.forEach(task => {
           template += `
-                  <tr taskId="${task.idc}">
-                  <td>${task.idc}</td>
+                  <tr taskId="${task.id}">
+                  <td>${task.id}</td>
                   <td  >
-                  ${task.nombrec}
+                  ${task.nombre}
                   </td>
                   
                   <td  >
-                  ${task.tipoc}
+                  ${task.apellido}
                   </td>
-                  
+                  <td>${task.empresa}</td>
+                  <td>${task.precontacto}</td>
+                  <td>${task.fecha}</td>
                   </tr>
                 `
         });
-        $('#campana').html(template);
+        $('#pre').html(template);
       }
     });
   }

@@ -1,6 +1,6 @@
 <?php
   include('database.php');
-  $query = "SELECT * from campana WHERE estadoc='Activa' ";
+  $query = "SELECT * from precontacto  ";
   $result = mysqli_query($connection, $query);
   if(!$result) {
     die('Query Failed'. mysqli_error($connection));
@@ -8,9 +8,12 @@
   $json = array();
   while($row = mysqli_fetch_array($result)) {
     $json[] = array(
-        'nombrec' => $row['nombrec'],
-      'tipoc' => $row['tipoc'],
-      'idc' => $row['idc']
+        'nombre' => $row['nombre'],
+      'apellido' => $row['apellido'],
+      'empresa' => $row['empresa'],
+      'precontacto' => $row['precontacto'],
+      'fecha' => $row['fecha'],
+      'id' => $row['id']
     );
   }
   $jsonstring = json_encode($json);

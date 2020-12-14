@@ -80,7 +80,7 @@ h6 {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link rel="stylesheet" href="estilos.css">
@@ -108,6 +108,48 @@ h6 {
     $fecha=date("Y-m-d ");
          ?>
 <!-- NAVIGATION  -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item ">
+      <a href="#exampleModal"  class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Usuario</span></a>
+      </li>
+      <li class="nav-item">
+      <a href="#exampleModal2" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nueva Marca</span></a>
+      </li>
+      
+      <li class="nav-item">
+      <a href="#exampleModal3" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Producto</span></a>
+      </li>
+      <li class="nav-item">
+      <a href="#exampleModal5" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nueva Campaña</span></a>
+      </li>
+      <li class="nav-item">
+      <a href="#exampleModal4" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nuevo Pre-Contacto</span></a>
+      </li>
+      <li class="nav-item">
+      <a href="#exampleModal6" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nueva Oportunidad</span></a>
+      </li>
+      <li class="nav-item">
+      <a href="#exampleModal7" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Oportunidades</span></a>
+      </li>
+      <li class="nav-item">
+      <a href="#exampleModal8" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Campañas</span></a>
+      </li>
+      </ul>
+      <span class="navbar-text">
+        Navbar text with an inline element
+      </span>
+    </div>
+  </div>
+</nav>
+<!--
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
      
 
@@ -133,61 +175,17 @@ h6 {
       <a href="#exampleModal6" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Nueva Oportunidad</span></a>
       </li>
       <li class="nav-item">
-      <a href="#myModal_selector" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Pre-Contactos</span></a>
-      </li>
-      <li class="nav-item">
       <a href="#exampleModal7" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Oportunidades</span></a>
       </li>
       <li class="nav-item">
       <a href="#exampleModal8" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Campañas</span></a>
       </li>
+      </ul>
       </div>
     </nav>
+    -->
     <!-- Modal Selector -->
-<div id="myModal_selector" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header" >
-      <h4 class="modal-title">Lista de Contactos</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" width="200px" class="container">
-        <p> Seleccion </p>
-        <select class="form-control" id="select_precontacto" onchange="select_precontacto();">
-        <option value=""> Seleccione </option>
-            <?php
-
-              include('database.php');
-
-              $sql = "SELECT * FROM precontacto ORDER BY nombre ASC";
-            $result = mysqli_query($connection, $sql);
-            while ($row = mysqli_fetch_array($result)) {
-
-                $id = $row['id'];
-                $nombre = $row['nombre'];
-                ?>
-                <option value="<?php echo $id; ?>"> <?php echo "&nbsp;"; ?> <?php echo $nombre; ?></option>
-
-                <?php
-            }
-            ?>
-        </select>
-      
-      
-        <div id="panel_selector"></div>
-      </div>
-      <div class="modal-footer">
-        
-      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
-      </div>
-    </div>
-
-  </div>
-</div>
  <!-- Modal Nueva Campaña -->
  <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">
    <div class="modal-dialog" role="document">
@@ -387,7 +385,7 @@ h6 {
       </div>
       <form id="task-producto" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
      <!-- <form   id="task-form" method="post" action="." oninput="range_control_value.value = range_control.valueAsNumber" class="ventanas" name="formValidation"> -->
-     <fieldset id="task-producto" method="post" class="needs-validation" novalidate>
+     <fieldset id="task-producto" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
       <div class="modal-body" width="200px" class="container">
       <div class="row">
       <div class="col-md-6 themed-grid-col" class="form-group">Nombre del Producto:
@@ -415,7 +413,7 @@ h6 {
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
       <div class="col-md-4 themed-grid-col" class="form-group">Total:
-        <input type="number" id="total"  class="form-control" disabled="disabled">
+        <input type="number" id="total"  class="form-control">
         <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
@@ -457,7 +455,7 @@ h6 {
 
     <div class="row">
       <div class="col-md-12 themed-grid-col" class="form-group">Imagen del Producto:
-        <input type="file" class="form-control"  id="imagen" required>
+        <input type="file" class="form-control" name="file" id="imagen" required>
                       <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
@@ -1079,73 +1077,24 @@ h6 {
   <div class="col-sm-6">
     <div class="card">
     <div class="card-header" align="center">
-    Oportunidades
+    Pre-Contactos
   </div>
       <div class="card-body">
-
-
-
-
-
-
       <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
                 <thead class="tabla">
                   <tr class="table-primary" class="tabla">
                     <td>Id</td>
-                    <td>Nombre Oportunidad</td>
-                    <td>Nombre Organización</td>
-                    
+                    <td>Nombre </td>
+                    <td>Apellido</td>
+                    <td>Nombre Empresa</td>
+                    <td>Estado</td>
+                    <td>Fecha</td>
                   </tr>
                 </thead>
-                <tbody id="opor"></tbody>
+                <tbody id="pre"></tbody>
               </table> 
 
 
-     <!-- <table class="table table-bordered">
-	<tr>
-    <th> # </th>
-		<th> Nombre Oportunidad </th>
-		<th> Nombre de la Organización </th>
-		
-		<th> </th>
-	</tr>
-<?php
-
-include('database.php');
-
-$query = "SELECT * from oportunidad WHERE eo='Activa'";
-$result = mysqli_query($connection, $query);
-  if(!$result) {
-    die('Query Failed'. mysqli_error($connection));
-  }
-$i =0;
-while($row = mysqli_fetch_array($result)) {
-	$i++;
-	$id_opor = $row['id_opor'];
-	$nombreopor = $row['nombreopor'];
-	$nombreorg = $row['nombreorg'];
-	?>
-     <tr>
-     	<td> <?php echo $i; ?></td>
-     	<td> <?php echo $nombreopor; ?></td>
-     	<td> <?php echo $nombreorg; ?></td>
-     	<td class="col-lg-1"> 
-     		 
-     		 <button class="btn btn-primary btn-xs" style="width: 100%;" data-toggle="modal" data-target="#myModal_consultaro" onclick="btn_ver('<?php echo $id_opor; ?>');"> Ver </button>
-            </td>
-            
-            <td>
-            <a type="button" class="btn btn-warning btn-sm fun" data-toggle="modal" data-target="#editar<?php echo $row['id_opor'];?>">
-              <span class="glyphicon glyphicon-edit"></span>
-            </a>
-            <?php include("mostrar-oportunidad.php");?>
-</td>
-     </tr>
-	<?php
-}
-
-?>
-</table> -->
       </div>
     </div>
   </div>
@@ -1272,26 +1221,37 @@ while($row = mysqli_fetch_array($result)) {
   <div class="col-sm-6">
     <div class="card">
     <div class="card-header" align="center">
-    Campañas
+    Oportunidades
   </div>
       <div class="card-body">
+
       <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
                 <thead class="tabla">
                   <tr class="table-primary" class="tabla">
                     <td>Id</td>
-                    <td>Nombre de la Campaña</td>
-                    <td>Tipo de Campaña</td>
+                    <td>Nombre Oportunidad</td>
+                    <td>Nombre Organización</td>
                     
                   </tr>
                 </thead>
-                <tbody id="campana"></tbody>
+                <tbody id="opor"></tbody>
               </table> 
       </div>
     </div>
   </div>
 </div>
 <br>
-<div class="card-deck">
+
+
+<div class="col-sm-12">
+    <div class="card">
+    <div class="card-header" align="center">
+    Productos Disponibles
+  </div>
+      <div class="card-body">
+
+
+      <div class="card-deck">
   <div class="card">
     <img class="imagen" class="card-img-top" src="imagenes/Logo1.jpg" alt="Card image cap" >
     <div class="card-body">
@@ -1318,7 +1278,11 @@ while($row = mysqli_fetch_array($result)) {
   </div>
 </div>
 
-
+   
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Final Div  -->
         </div>  

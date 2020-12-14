@@ -7,10 +7,11 @@
     $task_codigo = $_POST['codigo'];
     $task_precio = $_POST['precio'];
     $task_iva = $_POST['iva'];
+    $task_total = $_POST['total'];
     $task_cantidad = $_POST['cantidad'];
     $task_categoria = $_POST['categoria'];
     $task_proveedor = $_POST['proveedor'];
-    $task_imagen = $_FILES['imagen']['id'];
+    $task_imagen = $_FILES['imagen']['name'];
 
     $tipo = $_FILES['imagen']['type'];
     $tamagno = $_FILES['imagen']['size'];
@@ -24,8 +25,12 @@
     if(file_exists($_FILES['imagen']['tmp_name'])|| is_uploaded_file($_FILES['imagen']['tmp_name']));
     {
       $ext = explode(".", $_FILES['imagen']);
-      if($_FILES['imagen']['type'] == "imagen/jpg" || $_FILES['imagen']['type']  == "imagen/jpeg" || 
-      $_FILES['imagen']['type'] == "imagen/png");
+      if((($_FILES["file"]["type"] == "image/gif")
+				|| ($_FILES["file"]["type"] == "image/jpeg")
+				|| ($_FILES["file"]["type"] == "image/jpg")
+				|| ($_FILES["file"]["type"] == "image/pjpeg")
+				|| ($_FILES["file"]["type"] == "image/x-png")
+				|| ($_FILES["file"]["type"] == "image/png")));
       {
     
         $task_imagen = round(microtime(true)) . '.' . end($ext);
@@ -64,6 +69,7 @@
                                     codigo, 
                                     precio, 
                                     iva, 
+                                    total,
                                     cantidad, 
                                     categoria, 
                                     proveedor, 
@@ -73,6 +79,7 @@
                                     '$task_codigo', 
                                     '$task_precio', 
                                     '$task_iva', 
+                                    '$task_total',
                                     '$task_cantidad', 
                                     '$task_categoria', 
                                     '$task_proveedor', 
