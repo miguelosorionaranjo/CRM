@@ -782,9 +782,15 @@ h6 {
       </div>
 
       <div class="col-md-6 themed-grid-col" class="form-group">Fecha de Modificación:
-      <input type="date" id="fechamod"  class="form-control" class="fecha"   >
+        <?php 
+$min = new DateTime();
+$min->modify("-1 days");
+$max = new DateTime();
+?>
+      <input type="date" id="fechamod"  class="form-control" class="fecha" value="<?php echo date("Y-m-d");?>" min=<?=$min->format("Y-m-d")?> max=<?=$max->format("Y-m-d")?>  >
       </div>
     </div>
+
 <br>
 					<div class="modal-footer">
           <input type="hidden" id="taskId">
