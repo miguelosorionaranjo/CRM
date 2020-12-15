@@ -25,7 +25,7 @@
       'direccion' => $row['direccion'],
       'ps' => $row['ps'],
       'buscadormarca' => $row['buscadormarca'],
-      'buscadorvivo' => $row['buscadorvivo'],
+      'buscadorp' => $row['buscadorp'],
       'precontacto' => $row['precontacto'],
       'descripcion' => $row['descripcion'],
       'fecha' => $row['fecha'],

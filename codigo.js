@@ -196,7 +196,7 @@ $(document).ready(function() {
       direccion: $('#direccion').val(),
       ps: $('#ps').val(),
       buscadormarca: $('#buscadormarca').val(),
-      buscadorvivo: $('#buscadorvivo').val(),
+      buscadorp: $('#buscadorp').val(),
       precontacto: $('#precontacto').val(),
       descripcion: $('#descripcion').val(),
       fecha: $('#fecha').val(),
@@ -284,7 +284,7 @@ $(document).ready(function() {
                   </td>
                   
                   <td>
-                  ${task.buscadorvivo}
+                  ${task.buscadorp}
                   </td>
                   
                   <td>
@@ -337,7 +337,7 @@ $(document).ready(function() {
       $('#direccion').val(task.direccion);
       $('#ps').val(task.ps);
       $('#buscadormarca').val(task.buscadormarca);
-      $('#buscadorvivo').val(task.buscadorvivo);
+      $('#buscadorp').val(task.buscadorp);
       $('#precontacto').val(task.precontacto);
       $('#descripcion').val(task.descripcion);
       $('#fecha').val(task.fecha);

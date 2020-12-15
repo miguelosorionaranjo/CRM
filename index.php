@@ -724,7 +724,7 @@ h6 {
 
     <div class="row">
       <div class="col-md-6 themed-grid-col" class="form-group">Asignado a:
-        <select class="form-control" id="buscadorvivo" required>
+        <select class="form-control" id="buscadorp" required>
         <?php
   include('database.php');
 
@@ -782,7 +782,7 @@ h6 {
       </div>
 
       <div class="col-md-6 themed-grid-col" class="form-group">Fecha de Modificación:
-      <input type="datetime" id="fechamod"  class="form-control" class="fecha" value="<?= $fecha?>"  disabled="disabled">
+      <input type="date" id="fechamod"  class="form-control" class="fecha"   >
       </div>
     </div>
 <br>

@@ -18,7 +18,7 @@ if(isset($_POST['id'])) {
   $task_direccion = $_POST['direccion'];
   $task_ps = $_POST['ps'];
   $task_buscadormarca = $_POST['buscadormarca']; 
-  $task_buscadorvivo = $_POST['buscadorvivo']; 
+  $task_buscadorp = $_POST['buscadorp']; 
   $task_precontacto = $_POST['precontacto']; 
   $task_descripcion = $_POST['descripcion']; 
   $task_fecha = $_POST['fecha']; 
@@ -41,7 +41,7 @@ if(isset($_POST['id'])) {
                                     direccion = '$task_direccion', 
                                     ps = '$task_ps', 
                                     buscadormarca = '$task_buscadormarca',
-                                    buscadorvivo = '$task_buscadorvivo',
+                                    buscadorp = '$task_buscadorp',
                                     precontacto = '$task_precontacto',
                                     descripcion = '$task_descripcion',
                                     fecha = '$task_fecha',
