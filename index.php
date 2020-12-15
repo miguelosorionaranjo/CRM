@@ -83,7 +83,8 @@ h6 {
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-	<link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <title>CRM</title>  
     <script>
 			
@@ -620,12 +621,39 @@ h6 {
       <div class="col-md-4 themed-grid-col" class="form-group">Departamento:
         <select class="form-control" id="departamento" required>
       <option value="">Opciones</option>
-      <option value="Sr">Sr.</option>
-      <option value="Sra">Sra.</option>
-      <option Value="Srita">Srita.</option>
-      <option value="Dr">Dr.</option>
-      <option value="Prof">Prof.</option>
-      <option value="Ing">Ing.</option>
+      <option value="Amazonas">Amazonas </option>
+<option value="Antioquia">Antioquia </option>
+<option value="Arauca">Arauca</option>
+<option value="Atlántico">Atlántico</option>
+<option value="Bogotá">Bogotá</option>
+<option value="Bolívar">Bolívar </option>
+<option value="Boyacá">Boyacá </option>
+<option value="Caldas">Caldas</option>
+<option value="Caquetá">Caquetá</option>
+<option value="Casanare">Casanare</option>
+<option value="Cauca">Cauca</option>
+<option value="Cesar">Cesar</option>
+<option value="Chocó">Chocó</option>
+<option value="Córdoba">Córdoba</option>
+<option value="Cundinamarca">Cundinamarca</option>
+<option value="Guainía">Guainía</option>
+<option value="Guaviare">Guaviare</option>
+<option value="Huila">Huila</option>
+<option value="La Guajira">La Guajira</option>
+<option value="Magdalena">Magdalena</option>
+<option value="Meta">Meta</option>
+<option value="Nariño">Nariño</option>
+<option value="Norte de Santander">Norte de Santander</option>
+<option value="Putumayo">Putumayo</option>
+<option value="Quindío">Quindío</option>
+<option value="Risaralda">Risaralda</option>
+<option value="San Andrés y Providencia">San Andrés y Providencia</option>
+<option value="Santander">Santander </option>
+<option value="Sucre">Sucre </option>
+<option value="Tolima">Tolima</option>
+<option value="Valle del Cauca">Valle del Cauca</option>
+<option value="Vaupés">Vaupés</option>
+<option value="Vichada">Vichada</option>
     </select> 
                     <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
@@ -633,12 +661,26 @@ h6 {
       <div class="col-md-4 themed-grid-col" class="form-group">Ciudad:
         <select class="form-control" id="ciudad" required>
       <option value="">Opciones</option>
-      <option value="Sr.">Sr.</option>
-      <option value="Sra.">Sra.</option>
-      <option Value="Srita.">Srita.</option>
-      <option value="Dr.">Dr.</option>
-      <option value="Prof.">Prof.</option>
-      <option value="Ing.">Ing.</option>
+      <option value="Armenia">Armenia</option>
+<option value="Bogotá">Bogotá</option>
+<option value="Medellín">Medellín</option>
+<option value="Ibagué">Ibagué</option>
+<option value="Cali">Cali</option>
+<option value="Santa Marta">Santa Marta</option>
+<option value="Barranquilla">Barranquilla</option>
+<option value="Valledupar">Valledupar</option>
+<option value="Cartagena">Cartagena</option>
+<option value="Manizales">Manizales</option>
+<option value="Soacha">Soacha</option>
+<option value="Pereira">Pereira</option>
+<option value="Cúcuta">Cúcuta</option>
+<option value="Montería">Montería</option>
+<option value="Soledad">Soledad</option>
+<option value="Neiva">Neiva</option>
+<option value="Bucaramanga">Bucaramanga</option>
+<option value="San Juan de Pasto">San Juan de Pasto</option>
+<option value="Bello">Bello</option>
+<option value="Villavicencio">Villavicencio</option>
     </select> 
                      <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
@@ -1126,10 +1168,12 @@ $max = new DateTime();
     Pre-Contactos
   </div>
       <div class="card-body">
-      <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
-                <thead class="tabla">
+    
+              <table id="tablax" class="table table-striped table-bordered" style="width:100%">
+              <thead class="tabla">
                   <tr class="table-primary" class="tabla">
                     <td>Id</td>
+                    <td>#</td>
                     <td>Nombre </td>
                     <td>Apellido</td>
                     <td>Nombre Empresa</td>
@@ -1138,9 +1182,7 @@ $max = new DateTime();
                   </tr>
                 </thead>
                 <tbody id="pre"></tbody>
-              </table> 
-
-
+    </table>
       </div>
     </div>
   </div>
@@ -1212,13 +1254,13 @@ while($row = mysqli_fetch_array($result)) {
   </div>
       <div class="card-body">
 
-      <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
+      <table class="tabla" class="table table-bordered table-sm" id="customers" id="tablax" align="left">
                 <thead class="tabla">
                   <tr class="table-primary" class="tabla">
                     <td>Id</td>
                     <td>Nombre Oportunidad</td>
                     <td>Nombre Organización</td>
-                    
+                    <td></td>
                   </tr>
                 </thead>
                 <tbody id="opor"></tbody>
@@ -1293,6 +1335,7 @@ while($row = mysqli_fetch_array($result)) {
                   <ul id="container" style="line-height:250%" class="tabla table-bordered table-sm" > </ul>
                 </div>
               </div>
+
               <!--
               <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
                 <thead class="tabla">
@@ -1330,6 +1373,47 @@ while($row = mysqli_fetch_array($result)) {
     <script src="jquery/jquery-3.3.1.min.js"></script>	 	
     <script src="popper/popper.min.js"></script>	 	 	
     <script src="bootstrap4/js/bootstrap.min.js"></script>   	
-    <script src="codigo.js"></script> 	  
+    <script src="codigo.js"></script> 	 
+
+        <!-- JQUERY -->
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+        </script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+    </script>
+ 
+    
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#tablax').DataTable({
+                language: {
+                    processing: "Tratamiento en curso...",
+                    search: "Buscar&nbsp;:",
+                    lengthMenu: "Agrupar de _MENU_ items",
+                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                    infoEmpty: "No existen datos.",
+                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron datos con tu busqueda",
+                    emptyTable: "No hay datos disponibles en la tabla.",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Ultimo"
+                    },
+                    aria: {
+                        sortAscending: ": active para ordenar la columna en orden ascendente",
+                        sortDescending: ": active para ordenar la columna en orden descendente"
+                    }
+                },
+                scrollY: 400,
+                lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
+            });
+        });
+    </script>
   </body>
 </html>
