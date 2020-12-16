@@ -1,7 +1,6 @@
 <?php
   include('database.php');
 
-
   if(isset($_POST['name'])) {
     $task_name = $_POST['name'];
     $task_codigo = $_POST['codigo'];
@@ -33,8 +32,6 @@
       }
     }
     
-
-
  //   if(isset($imagen) && $imagen != ""){
    //   $tipo = $_FILES['imagen']['type'];
      // $temp  = $_FILES['imagen']['tmp_name'];

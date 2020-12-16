@@ -646,6 +646,16 @@ function producto() {
       }
     });
   }
+     // Eliminar Producto
+     $(document).on('click', '.task-eliminarp', (e) => {
+      if(confirm('¿Estás seguro de que quieres eliminarlo?')) {
+        const element = $(this)[0].activeElement.parentElement.parentElement;
+        const id = $(element).attr('taskId');
+        $.post('eliminar-productot.php', {id}, (response) => {
+          fetchTasks();
+        });
+      }
+    });
    // Lista productos
    function productost() {
     $.ajax({
@@ -674,7 +684,11 @@ function producto() {
                   <td>${task.cantidad}</td>
                   <td>${task.proveedor}</td>
                   <td>${task.imagen}</td>
-                 
+                  <td>
+                  <button class="task-eliminarp btn btn-danger">
+                   Eliminar 
+                  </button>
+                </td>
                   </tr>
                 `
         });

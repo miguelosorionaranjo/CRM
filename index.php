@@ -1147,6 +1147,7 @@ $max = new DateTime();
                     <td>Cantidad</td>
                     <td>Proveedor</td>
                     <td>Imágen</td>
+                    <td> Opción</td>
                   </tr>
                 </thead>
                 <tbody id="productost"></tbody>
