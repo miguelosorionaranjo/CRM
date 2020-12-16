@@ -7,15 +7,13 @@
     $task_codigo = $_POST['codigo'];
     $task_precio = $_POST['precio'];
     $task_iva = $_POST['iva'];
-    $task_total = $_POST['total'];
     $task_cantidad = $_POST['cantidad'];
     $task_categoria = $_POST['categoria'];
     $task_proveedor = $_POST['proveedor'];
-    $imagen = $_FILES['imagen']['name'];
+    $task_imagen = $_FILES['imagen']['id'];
 
-    if(isset($imagen) && $imagen != ""){
-      $tipo = $_FILES['imagen']['type'];
-      $temp  = $_FILES['imagen']['tmp_name'];
+    $tipo = $_FILES['imagen']['type'];
+    $tamagno = $_FILES['imagen']['size'];
  //   $dir_subida = 'imagenes/';
   //  $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
   //  move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
@@ -26,16 +24,12 @@
     if(file_exists($_FILES['imagen']['tmp_name'])|| is_uploaded_file($_FILES['imagen']['tmp_name']));
     {
       $ext = explode(".", $_FILES['imagen']);
-      if((($_FILES["file"]["type"] == "image/gif")
-				|| ($_FILES["file"]["type"] == "image/jpeg")
-				|| ($_FILES["file"]["type"] == "image/jpg")
-				|| ($_FILES["file"]["type"] == "image/pjpeg")
-				|| ($_FILES["file"]["type"] == "image/x-png")
-				|| ($_FILES["file"]["type"] == "image/png")));
+      if($_FILES['imagen']['type'] == "imagen/jpg" || $_FILES['imagen']['type']  == "imagen/jpeg" || 
+      $_FILES['imagen']['type'] == "imagen/png");
       {
     
-        $imagen = round(microtime(true)) . '.' . end($ext);
-        move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta_destino.$imagen);
+        $task_imagen = round(microtime(true)) . '.' . end($ext);
+        move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta_destino.$task_imagen);
       }
     }
     
@@ -70,7 +64,6 @@
                                     codigo, 
                                     precio, 
                                     iva, 
-                                    total,
                                     cantidad, 
                                     categoria, 
                                     proveedor, 
@@ -80,11 +73,10 @@
                                     '$task_codigo', 
                                     '$task_precio', 
                                     '$task_iva', 
-                                    '$task_total',
                                     '$task_cantidad', 
                                     '$task_categoria', 
                                     '$task_proveedor', 
-                                    '$imagen')";
+                                    '$task_imagen')";
   $result = mysqli_query($connection, $query);
  // move_uploaded_file($temp,'imagenes/'.$imagen);
  // header('location:index.php');
@@ -104,6 +96,6 @@
 
  // echo  $_FILES['imagen']['type'];
 }
-  }
+
 
 ?>

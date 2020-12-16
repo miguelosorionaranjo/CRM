@@ -142,6 +142,9 @@ h6 {
       <li class="nav-item">
       <a href="#exampleModal8" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Campañas</span></a>
       </li>
+      <li class="nav-item">
+      <a href="#exampleModal9" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Productos</span></a>
+      </li>
       </ul>
       
     </div>
@@ -430,13 +433,13 @@ h6 {
       <div class="modal-body" width="200px" class="container">
       <div class="row">
       <div class="col-md-6 themed-grid-col" class="form-group">Nombre del Producto:
-        <input type="text" id="name" placeholder="Ingrese Nombre" class="form-control"  required>   
+        <input type="text" id="name" placeholder="Ingrese Nombre del Producto" class="form-control"  required>   
         <div class="valid-feedback">¡Ok válido!</div>
          <div class="invalid-feedback">Complete el campo.</div>  
       </div>
 
       <div class="col-md-6 themed-grid-col" class="form-group">Código del Producto:
-        <input type="number" id="codigo" placeholder=" Ingrese Apellido" class="form-control" required>
+        <input type="number" id="codigo" placeholder=" Ingrese Código del Producto" class="form-control" required>
         <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>  
       </div>
@@ -1122,6 +1125,41 @@ $max = new DateTime();
     </div>
   </div>
 </div>   
+<!-- Modal Listar Productos -->
+<div class="modal fade" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" >
+      <h4 class="modal-title">Lista de Productos</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" width="200px" class="container">
+      
+      <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
+                <thead class="tabla">
+                  <tr class="table-primary" class="tabla">
+                    <td>Id</td>
+                    <td>Nombre Producto</td>
+                    <td> Código</td>
+                    <td>Total</td>
+                    <td>Cantidad</td>
+                    <td>Proveedor</td>
+                    <td>Imágen</td>
+                  </tr>
+                </thead>
+                <tbody id="productost"></tbody>
+              </table> 
+
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
+					</div>
+      </div>
+     
+    </div>
+  </div>
+</div> 
      <!-- Body  -->
      <div style="height: 20px;"></div>
     <div class="container"  >

@@ -30,7 +30,7 @@ $(document).ready(function() {
   opor();
   oportunidades();
   campanas();
-  
+  productost();
   $('#task-result').hide();
   // Buscador
   $('#search').keyup(function() {
@@ -614,10 +614,6 @@ function producto() {
       }
     });
   }
-
-
-
-
   // Lista Camapañas cambio de estado
   function campanas() {
     $.ajax({
@@ -650,6 +646,41 @@ function producto() {
       }
     });
   }
- 
+   // Lista productos
+   function productost() {
+    $.ajax({
+      url: 'lista-productost.php',
+      type: 'GET',
+      success: function(response) {
+        const productost = JSON.parse(response);
+        let template = '';
+        productost.forEach(task => {
+          template += `
+                  <tr taskId="${task.id}">
+                  <td>${task.id}</td>
+                  <td  >
+                  ${task.name}
+                  </td>
+                  <td>
+                  <a href="#" class="task-item">
+                    ${task.codigo} 
+                  </a>
+                  </td>
+                  <td>
+                  <a href="#" class="task-item">
+                    ${task.total} 
+                  </a>
+                  </td>
+                  <td>${task.cantidad}</td>
+                  <td>${task.proveedor}</td>
+                  <td>${task.imagen}</td>
+                 
+                  </tr>
+                `
+        });
+        $('#productost').html(template);
+      }
+    });
+  }
  // Fin del Código
 });
