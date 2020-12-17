@@ -8,7 +8,8 @@
   $json = array();
   while($row = mysqli_fetch_array($result)) {
     $json[] = array(
-      'nombre' => $row['nombre'],
+      'nombre2' => $row['nombre2'],
+      'estadom' => $row['estadom'],
       'id' => $row['id']
     );
   }

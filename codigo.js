@@ -105,13 +105,15 @@ $(document).ready(function() {
                   <tr taskId="${task.id}">
                   <td>${task.id}</td>
                   <td  >
-                  ${task.nombre}
-                  </td>
-                  <td  >
-                  ${task.estadom}
+                  ${task.nombre2}
                   </td>
                   <td>
-                    <button class="task-delete btn btn-danger">
+                  <button class="task-activam btn btn-success-activa ">
+                  ${task.estadom}
+                  </button>
+                  </td>
+                  <td>
+                    <button class="task-deletem btn btn-danger">
                      Eliminar 
                     </button>
                   </td>
@@ -369,7 +371,7 @@ $(document).ready(function() {
     });
 
   // Eliminar Marca
-  $(document).on('click', '.task-delete', (e) => {
+  $(document).on('click', '.task-deletem', (e) => {
     if(confirm('¿Estás seguro de que quieres eliminarlo?')) {
       const element = $(this)[0].activeElement.parentElement.parentElement;
       const id = $(element).attr('taskId');
@@ -576,7 +578,16 @@ function producto() {
         });
       }
     });
-  
+   //Cambiar estado Campañas
+   $(document).on('click', '.task-activam', (e) => {
+    if(confirm('¿Estás seguro de que quieres activarlo?')) {
+      const element = $(this)[0].activeElement.parentElement.parentElement;
+      const id = $(element).attr('taskId');
+      $.post('task-activa-marca.php', {id}, (response) => {
+        fetchTasks();
+      });
+    }
+  });
 
   // Lista pre contactos Index
   function pre() {
