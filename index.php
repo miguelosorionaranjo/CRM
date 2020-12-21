@@ -149,9 +149,7 @@ h6 {
       <li class="nav-item">
       <a href="#exampleModal99" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Marcas</span></a>
       </li>
-      <li class="nav-item">
-      <a href="#exampleModal999" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Contactos</span></a>
-      </li>
+      
       </ul>
       
     
@@ -1252,38 +1250,7 @@ $max = new DateTime();
     </div>
   </div>
 </div> 
-<!-- Modal Listar Contactos -->
-<div class="modal fade" id="exampleModal999" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">
-   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header" >
-      <h4 class="modal-title">Lista de Contactos</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" width="200px" class="container">
-      
-      <table id="contactos" class="table table-striped table-bordered" style="width:100%">
-                <thead class="tabla">
-                  <tr class="table-primary" class="tabla">
-                    <td>Nombre</td>
-                    <td>Apellido</td>
-                    <td> Estado</td>
-                    <td> Opción</td>
-                  </tr>
-                </thead>
-                <tbody id="tasks"></tbody>
-              </table> 
 
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
-					</div>
-      </div>
-     
-    </div>
-  </div>
-</div> 
      <!-- Body  -->
      <div style="height: 20px;"></div>
     <div class="container"  >
@@ -1405,9 +1372,38 @@ while($row = mysqli_fetch_array($result)) {
 
   </div>
 </div>
+<!-- Lista de Contactos Index-->
+<div class="col-sm-6">
+    <div class="card">
+    <div class="card-header" align="center">
+    Lista de Contactos
+  </div>
+      <div class="card-body">
+    
+              <table id="contactoss" class="table table-striped table-bordered" style="width:100%">
+              <thead class="tabla">
+                  <tr class="table-primary" class="tabla">
+                    <td>Id</td>
+                    <td>#</td>
+                    <td>Nombre </td>
+                    <td>Apellido</td>
+                    <td>Nombre Empresa</td>
+                    <td>Estado</td>
+                    <td>Fecha</td>
+                  </tr>
+                </thead>
+                <tbody id="tasks"></tbody>
+    </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br>
 
 <!-- Lista Oportunidades Index-->
-  <div class="col-sm-6">
+<div class="col-sm-6">
     <div class="card">
     <div class="card-header" align="center">
     Oportunidades
@@ -1428,10 +1424,8 @@ while($row = mysqli_fetch_array($result)) {
       </div>
     </div>
   </div>
-</div>
-<br>
-
-<div class="col-sm-12">
+  <!-- Lista Productos Index-->
+<div class="col-sm-6">
     <div class="card">
     <div class="card-header" align="center">
     Productos Disponibles
@@ -1575,6 +1569,36 @@ while($row = mysqli_fetch_array($result)) {
     <script>
         $(document).ready(function () {
             $('#contactos').DataTable({
+                language: {
+                    processing: "Tratamiento en curso...",
+                    search: "Buscar&nbsp;:",
+                    lengthMenu: "Agrupar de _MENU_ items",
+                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                    infoEmpty: "No existen datos.",
+                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron datos con tu busqueda",
+                    emptyTable: "No hay datos disponibles en la tabla.",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Ultimo"
+                    },
+                    aria: {
+                        sortAscending: ": active para ordenar la columna en orden ascendente",
+                        sortDescending: ": active para ordenar la columna en orden descendente"
+                    }
+                },
+                scrollY: 400,
+                lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
+            });
+        });
+    </script>
+     <script>
+        $(document).ready(function () {
+            $('#contactoss').DataTable({
                 language: {
                     processing: "Tratamiento en curso...",
                     search: "Buscar&nbsp;:",
