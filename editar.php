@@ -23,6 +23,7 @@ if(isset($_POST['id'])) {
   $task_descripcion = $_POST['descripcion']; 
   $task_fecha = $_POST['fecha']; 
   $task_fechamod = $_POST['fechamod']; 
+  $task_conver = $_POST['conver']; 
   $id = $_POST['id'];
   $query = "UPDATE precontacto SET gender = '$task_gender', 
                                     nombre = '$task_nombre', 
@@ -45,7 +46,8 @@ if(isset($_POST['id'])) {
                                     precontacto = '$task_precontacto',
                                     descripcion = '$task_descripcion',
                                     fecha = '$task_fecha',
-                                    fechamod = '$task_fechamod' 
+                                    fechamod = '$task_fechamod',
+                                    conver = '$task_conver'
                                     WHERE id = '$id'";
   $result = mysqli_query($connection, $query);
   if (!$result) {

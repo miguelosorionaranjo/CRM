@@ -1,6 +1,6 @@
 <?php
   include('database.php');
-  $query = "SELECT * from precontacto  ";
+  $query = "SELECT * from precontacto WHERE conver='No'   ";
   $result = mysqli_query($connection, $query);
   if(!$result) {
     die('Query Failed'. mysqli_error($connection));

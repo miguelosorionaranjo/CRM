@@ -203,6 +203,7 @@ $(document).ready(function() {
       descripcion: $('#descripcion').val(),
       fecha: $('#fecha').val(),
       fechamod: $('#fechamod').val(),
+      conver: $('#conver').val(),
       id: $('#taskId').val()
     };
     const url = edit === false ? 'agregar.php' : 'editar.php' ;
@@ -224,10 +225,7 @@ $(document).ready(function() {
         tasks.forEach(task => {
           template += `
                   <tr taskId="${task.id}">
-                  <td>${task.id}</td>
-                  <td  >
-                  ${task.gender}
-                  </td>
+                 
                   <td>
                   <a href="#" class="task-item">
                     ${task.nombre} 
@@ -248,29 +246,13 @@ $(document).ready(function() {
                   <td  >
                   ${task.cargo}
                   </td>
-                  <td  >
-                  ${task.origen}
-                  </td>
-                  <td>
-                  ${task.pais}
-                  </td>
-                  <td   >
-                  ${task.departamento}
-                  </td>
+                 
                   <td >
                   ${task.ciudad}
                   </td>
                   
                   <td>
-                  ${task.pagina}
-                  </td>
-                  
-                  <td>
                   ${task.empresa}
-                  </td>
-                  
-                  <td>
-                  ${task.industria}
                   </td>
                   
                   <td>
@@ -295,10 +277,6 @@ $(document).ready(function() {
                   
                   <td>
                   ${task.descripcion}
-                  </td>
-                  
-                  <td >
-                  ${task.fecha}
                   </td>
                   
                   <td>
@@ -344,6 +322,7 @@ $(document).ready(function() {
       $('#descripcion').val(task.descripcion);
       $('#fecha').val(task.fecha);
       $('#fechamod').val(task.fechamod);
+      $('#conver').val(task.conver);
       $('#taskId').val(task.id);
       edit = true;
     });

@@ -65,9 +65,10 @@ h6 {
   text-transform: lowercase;
 }
 .imagen {
-    width:70%;
+    width:50%;
     text-align: center;
 }
+
       </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -148,8 +149,13 @@ h6 {
       <li class="nav-item">
       <a href="#exampleModal99" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Marcas</span></a>
       </li>
+      <li class="nav-item">
+      <a href="#exampleModal999" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xe235;</i><span>Listar Contactos</span></a>
+      </li>
       </ul>
       
+    
+
     </div>
   </div>
 </nav>
@@ -188,6 +194,48 @@ h6 {
       </div>
     </nav>
     -->
+
+
+
+
+
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
     <!-- Modal Selector -->
 <div id="myModal_selector" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -825,17 +873,25 @@ h6 {
     </div>
 
     <div class="row">
-      <div class="col-md-6 themed-grid-col" class="form-group">Fecha de Creación:
+      <div class="col-md-4 themed-grid-col" class="form-group">Fecha de Creación:
       <input type="datetime" id="fecha"  class="form-control" class="fecha" value="<?= $fecha?>"  disabled="disabled">
       </div>
 
-      <div class="col-md-6 themed-grid-col" class="form-group">Fecha de Modificación:
+      <div class="col-md-4 themed-grid-col" class="form-group">Fecha de Modificación:
         <?php 
 $min = new DateTime();
 $min->modify("-1 days");
 $max = new DateTime();
 ?>
       <input type="date" id="fechamod"  class="form-control" class="fecha" value="<?php echo date("Y-m-d");?>" min=<?=$min->format("Y-m-d")?> max=<?=$max->format("Y-m-d")?>  >
+      </div>
+
+      <div class="col-md-4 themed-grid-col" class="form-group">Convertir a Contacto:
+        <select class="form-control" id="conver" required>
+      <option value="">Opciones</option>
+      <option value="Si">Si.</option>
+      <option value="No">No.</option>
+    </select> 
       </div>
     </div>
 
@@ -1196,6 +1252,38 @@ $max = new DateTime();
     </div>
   </div>
 </div> 
+<!-- Modal Listar Contactos -->
+<div class="modal fade" id="exampleModal999" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" >
+      <h4 class="modal-title">Lista de Contactos</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" width="200px" class="container">
+      
+      <table id="contactos" class="table table-striped table-bordered" style="width:100%">
+                <thead class="tabla">
+                  <tr class="table-primary" class="tabla">
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td> Estado</td>
+                    <td> Opción</td>
+                  </tr>
+                </thead>
+                <tbody id="tasks"></tbody>
+              </table> 
+
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
+					</div>
+      </div>
+     
+    </div>
+  </div>
+</div> 
      <!-- Body  -->
      <div style="height: 20px;"></div>
     <div class="container"  >
@@ -1211,7 +1299,7 @@ $max = new DateTime();
           </div>
         <div class="card-body">
 
-        <h1 class="display-1" align="center">Bienvenidos</h1>
+      <!--  <h1 class="display-1" align="center">Bienvenidos</h1>-->
 
      <!--    <h1 class="h2">Encabezado h1 con estilo h2</h1> -->
 
@@ -1239,7 +1327,7 @@ $max = new DateTime();
   <div class="col-sm-6">
     <div class="card">
     <div class="card-header" align="center">
-    Pre-Contactos
+    Lista de Pre-Contactos
   </div>
       <div class="card-body">
     
@@ -1284,9 +1372,7 @@ $max = new DateTime();
   </tr>
   
 <?php
-
 include('database.php');
-
 $query = "SELECT * from oportunidad WHERE id_opor ='$id_opor' ";
 $result = mysqli_query($connection, $query);
   if(!$result) {
@@ -1358,24 +1444,21 @@ while($row = mysqli_fetch_array($result)) {
     <img class="imagen" class="card-img-top" src="imagenes/Logo1.jpg" alt="Card image cap" >
     <div class="card-body">
   <!--    <h5 class="card-title">Card title</h5> -->
-      <button type="button" class="btn btn-primary">Ir a...</button>
-       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+     
     </div>
   </div>
   <div class="card">
     <img class="imagen" class="card-img-top" src="imagenes/Logo2.png" alt="Card image cap">
     <div class="card-body">
    <!--   <h5 class="card-title">Card title</h5> -->
-      <button type="button" class="btn btn-primary">Ir a...</button>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+     
     </div>
   </div>
   <div class="card">
     <img class="imagen" class="card-img-top" src="imagenes/Logo3.png" alt="Card image cap">
     <div class="card-body">
    <!--   <h5 class="card-title">Card title</h5> -->
-      <button type="button" class="btn btn-primary">Ir a...</button>
-       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      
     </div>
   </div>
 </div>
@@ -1462,6 +1545,36 @@ while($row = mysqli_fetch_array($result)) {
     <script>
         $(document).ready(function () {
             $('#tablax').DataTable({
+                language: {
+                    processing: "Tratamiento en curso...",
+                    search: "Buscar&nbsp;:",
+                    lengthMenu: "Agrupar de _MENU_ items",
+                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                    infoEmpty: "No existen datos.",
+                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron datos con tu busqueda",
+                    emptyTable: "No hay datos disponibles en la tabla.",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Ultimo"
+                    },
+                    aria: {
+                        sortAscending: ": active para ordenar la columna en orden ascendente",
+                        sortDescending: ": active para ordenar la columna en orden descendente"
+                    }
+                },
+                scrollY: 400,
+                lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#contactos').DataTable({
                 language: {
                     processing: "Tratamiento en curso...",
                     search: "Buscar&nbsp;:",

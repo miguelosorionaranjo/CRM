@@ -32,6 +32,7 @@ if(isset($_POST['id'])) {
       'descripcion' => $row['descripcion'],
       'fecha' => $row['fecha'],
       'fechamod' => $row['fechamod'],
+      'conver' => $row['conver'],
       'id' => $row['id']
     );
   }

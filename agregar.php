@@ -23,6 +23,7 @@ if(isset($_POST['nombre'])) {
   $task_precontacto = $_POST['precontacto'];
   $task_descripcion = $_POST['descripcion'];
   $task_fecha = $_POST['fecha'];
+  $task_conver = $_POST['conver'];
   $query = "INSERT into precontacto(gender, 
                                     nombre, 
                                     apellido, 
@@ -43,7 +44,8 @@ if(isset($_POST['nombre'])) {
                                     buscadorp, 
                                     precontacto, 
                                     descripcion, 
-                                    fecha) 
+                                    fecha,
+                                    conver) 
                                     VALUES 
                                     ('$task_gender',
                                     '$task_nombre', 
@@ -65,7 +67,8 @@ if(isset($_POST['nombre'])) {
                                     '$task_buscadorp', 
                                     '$task_precontacto', 
                                     '$task_descripcion',  
-                                    '$task_fecha')";
+                                    '$task_fecha',
+                                    '$task_conver')";
   $result = mysqli_query($connection, $query);
   if (!$result) {
     die('Query Failed.');

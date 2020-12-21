@@ -1,6 +1,6 @@
 <?php
   include('database.php');
-  $query = "SELECT * from precontacto ";
+  $query = "SELECT * from precontacto WHERE conver='Si' ";
   $result = mysqli_query($connection, $query);
   if(!$result) {
     die('Query Failed'. mysqli_error($connection));
@@ -30,6 +30,7 @@
       'descripcion' => $row['descripcion'],
       'fecha' => $row['fecha'],
       'fechamod' => $row['fechamod'],
+      'conver' => $row['conver'],
       'id' => $row['id']
     );
   }
