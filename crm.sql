@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 15-12-2020 a las 19:42:33
+-- Tiempo de generación: 09-01-2021 a las 18:29:05
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -57,20 +57,14 @@ CREATE TABLE IF NOT EXISTS `marca` (
   `nombre2` varchar(50) DEFAULT NULL,
   `estadom` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `marca`
 --
 
 INSERT INTO `marca` (`id`, `nombre2`, `estadom`) VALUES
-(1, 'Fase Pi Group', NULL),
-(2, 'Intetron', NULL),
-(3, 'MegafonÃ­a', NULL),
-(4, 'Intetron Servicios', NULL),
-(12, 'Miguel', NULL),
-(18, 'Localizacion', NULL),
-(19, 'Localizacion', 'Inactiva');
+(1, 'Localizacion', 'Activa');
 
 -- --------------------------------------------------------
 
@@ -138,21 +132,38 @@ CREATE TABLE IF NOT EXISTS `precontacto` (
   `descripcion` varchar(200) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `fechamod` date NOT NULL,
+  `conver` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
 
 --
 -- Volcado de datos para la tabla `precontacto`
 --
 
-INSERT INTO `precontacto` (`id`, `gender`, `nombre`, `apellido`, `principal`, `celular`, `correop`, `cargo`, `origen`, `pais`, `departamento`, `ciudad`, `pagina`, `empresa`, `industria`, `direccion`, `ps`, `buscadormarca`, `buscadorp`, `precontacto`, `descripcion`, `fecha`, `fechamod`) VALUES
-(1, 'Srita.', 'Carol', 'Gimenez', 54654654, '654654654', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Pagina Web', 'Mexico', '', '', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Sra', 'Botoga', 'Intetron', 'Intetron', 'MiguelÂ Osorio', 'Contactados Chat', 'hola mundo', '2020-12-15', '2020-12-15'),
-(11, 'Srita.', 'Miguel', 'Medina', 213230, '32320320', 'miguelosorionaranjo@gmail.com', 'Hola', 'Base de Datos', 'Mexico', 'Sra', 'Sra.', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Sra', '1615652651', 'Intetron', 'Intetron Servicios', 'CaroÂ Barato', 'No Interesado', '226226', '0000-00-00', '0000-00-00'),
-(13, 'Sra.', 'Alex', 'Gonzalez', 123456456, '12312345', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Base de Datos', 'Colombia', 'Sra', 'Sra.', 'http://localhost/FasePiGroup/CRM/', 'Fase Pi Group', 'Srita', 'Bogota', 'Intetron', 'Intetron', 'MiguelÂ Osorio', 'Nuevo', 'fsdfsdfsdfs', '2020-11-27', '2020-12-15'),
-(18, 'Srita.', 'Jaime', 'Ochoa', 789789, '3334445212', 'miguelosorionaranjo@gmail.com', 'Web', 'Base de Datos', 'Mexico', 'Srita', 'Srita.', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Srita', 'fdgdfgdfg', 'Intetron', 'Intetron', '', 'Intentando Contactar', 'gdfgdfgd', '2020-11-27', '0000-00-00'),
-(22, 'Sr.', 'Juan', 'Medina', 315245, '45454654', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Sitio Web', 'Peru', 'Srita', 'Srita.', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Dr', 'colombia', 'Intetron', 'Intetron', '', 'No Interesado', 'sdsdssdsd', '2020-12-15', '2020-12-15'),
-(23, 'Srita.', 'Jaime', 'Ochoa', 315245, '45454654', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Base de Datos', 'Mexico', 'Srita', 'Srita.', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Sra', 'buscadorvivo', 'Intetron', 'Intetron', '', 'Contactados Chat', 'sdvsdvsd', '2020-12-15', '0000-00-00'),
-(26, 'Ing.', 'Miguel', 'Osorio', 315245, '45454654', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Sitio Web', 'Mexico', 'Srita', 'Sra.', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Sra', 'sdsdsdsd', 'Intetron', 'Intetron', 'MiguelÂ Osorio', 'No Interesado', 'ssdsdsdsdsds', '2020-12-15', '2020-12-15');
+INSERT INTO `precontacto` (`id`, `gender`, `nombre`, `apellido`, `principal`, `celular`, `correop`, `cargo`, `origen`, `pais`, `departamento`, `ciudad`, `pagina`, `empresa`, `industria`, `direccion`, `ps`, `buscadormarca`, `buscadorp`, `precontacto`, `descripcion`, `fecha`, `fechamod`, `conver`) VALUES
+(1, 'Srita.', 'Carol', 'Gimenez', 54654654, '363-363-2512', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Pagina Web', 'Mexico', 'BogotÃ¡', 'Cali', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Sra', 'Botoga', 'Intetron', 'Localizacion', 'MiguelÂ Osorio', 'Nuevo', 'hola mundo', '2020-12-15', '2020-12-21', 'No'),
+(11, 'Srita.', 'Miguel', 'Medina', 213230, '32320320', 'miguelosorionaranjo@gmail.com', 'Hola', 'Base de Datos', 'Mexico', 'Sra', 'Sra.', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Sra', '1615652651', 'Intetron', 'Intetron Servicios', 'CaroÂ Barato', 'No Interesado', '226226', '0000-00-00', '0000-00-00', 'No'),
+(13, 'Sra.', 'Alex', 'Gonzalez', 123456456, '12312345', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Base de Datos', 'Colombia', 'Sra', 'Sra.', 'http://localhost/FasePiGroup/CRM/', 'Fase Pi Group', 'Srita', 'Bogota', 'Intetron', 'Intetron', 'MiguelÂ Osorio', 'Nuevo', 'fsdfsdfsdfs', '2020-11-27', '2020-12-15', 'No'),
+(18, 'Srita.', 'Jaime', 'Ochoa', 789789, '3334445212', 'miguelosorionaranjo@gmail.com', 'Web', 'Base de Datos', 'Mexico', 'Srita', 'Srita.', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Srita', 'fdgdfgdfg', 'Intetron', 'Intetron', '', 'Intentando Contactar', 'gdfgdfgd', '2020-11-27', '0000-00-00', 'No'),
+(22, 'Sr.', 'Juan', 'Medina', 315245, '45454654', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Sitio Web', 'Peru', 'Srita', 'Srita.', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Dr', 'colombia', 'Intetron', 'Intetron', '', 'No Interesado', 'sdsdssdsd', '2020-12-15', '2020-12-15', 'No'),
+(23, 'Srita.', 'Jaime', 'Ochoa', 315245, '45454654', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Base de Datos', 'Mexico', 'Srita', 'Srita.', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Sra', 'buscadorvivo', 'Intetron', 'Intetron', '', 'Contactados Chat', 'sdvsdvsd', '2020-12-15', '0000-00-00', 'No'),
+(26, 'Ing.', 'Miguel', 'Osorio', 315245, '45454654', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Sitio Web', 'Mexico', 'Srita', 'Sra.', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Sra', 'sdsdsdsd', 'Intetron', 'Intetron', 'MiguelÂ Osorio', 'No Interesado', 'ssdsdsdsdsds', '2020-12-15', '2020-12-15', 'No'),
+(31, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'xxxx', '2020-12-15', '0000-00-00', ''),
+(36, 'Srita.', 'Miguel', 'Osorio', 315245, '363-212-5458', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Sitio Web', 'Colombia', 'BogotÃ¡', 'MedellÃ­n', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Srita', 'holaaaaaaaaaaaa', 'Intetron', 'Localizacion', 'nombre1Â apellido1', 'Nuevo', 'sdsdfsdfsdfsdf', '2020-12-21', '0000-00-00', 'Si'),
+(37, 'Srita.', 'Miguel', 'Osorio', 315245, '363-363-2512', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Referido', 'Peru', 'AtlÃ¡ntico', 'Santa Marta', 'http://localhost/FasePiGroup/CRM/', 'Fase Pi Group', 'Srita', 'sdsdsd', 'Intetron', 'Localizacion', 'MiguelÂ Osorio', 'No Interesado', 'sdsdsdsd', '2020-12-21', '0000-00-00', 'No'),
+(38, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2020-12-21', '0000-00-00', ''),
+(39, 'Sr.', 'Miguel', 'Medina', 315245, '363-363-2512', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Sitio Web', 'Colombia', 'Arauca', 'Barranquilla', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Srita', 'sdsdsdsdsd', 'Intetron', 'Localizacion', 'CaroÂ Barato', 'No Interesado', '', '2020-12-21', '0000-00-00', 'No'),
+(40, '', '', '', 315245, '363-363-2512', 'd', 'Desarrollador Web', 'Pagina Web', 'Colombia', 'Amazonas', 'BogotÃ¡', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Sra', '000000', 'Intetron', 'Localizacion', 'MiguelÂ Osorio', 'No Interesado', 'hhhhhh', '2020-12-21', '0000-00-00', 'Si'),
+(41, 'Srita.', 'Juan', 'Perez', 1232131321, '363-363-2512', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Base de Datos', 'Mexico', 'Arauca', 'Santa Marta', 'http://localhost/FasePiGroup/CRM/', 'Fase Pi Group', 'Sra', 'ssasass', 'Intetron', 'Localizacion', 'MiguelÂ Osorio', 'No Interesado', 'sasasas', '2020-12-21', '0000-00-00', 'Si'),
+(42, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2020-12-21', '0000-00-00', 'Si'),
+(43, 'Sra.', 'Miguel', 'Gimenez', 315245, '363-363-2512', 'miguelosorionaranjo@gmail.com', 'Desarrollador Web', 'Sitio Web', 'Mexico', 'AtlÃ¡ntico', 'MedellÃ­n', 'http://localhost/php-ajax-master/CRM/index.php', 'Fase Pi Group', 'Sra', 'sasasas', 'Intetron', 'Localizacion', 'nombre1Â apellido1', 'Intentando Contactar', 'asasasas', '2020-12-21', '0000-00-00', 'No'),
+(44, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2020-12-21', '0000-00-00', 'No'),
+(45, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2020-12-21', '0000-00-00', 'No'),
+(46, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2020-12-21', '0000-00-00', ''),
+(47, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'No Interesado', '', '2020-12-21', '0000-00-00', 'No'),
+(48, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Contactados Chat', '', '2020-12-21', '0000-00-00', 'No'),
+(49, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Contactados Chat', '', '2020-12-21', '0000-00-00', 'No'),
+(50, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 'nombre123Â apellido1', 'Descargato', '', '2020-12-21', '0000-00-00', 'No');
 
 -- --------------------------------------------------------
 
@@ -172,32 +183,14 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `proveedor` varchar(100) DEFAULT NULL,
   `imagen` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
 INSERT INTO `producto` (`id`, `name`, `codigo`, `precio`, `iva`, `total`, `cantidad`, `categoria`, `proveedor`, `imagen`) VALUES
-(1, '', 0, 0, 0, 0, 0, '', '', '1606829519.'),
-(2, '', 0, 0, 0, 0, 0, '', '', '1606829665.'),
-(3, '', 0, 0, 0, 0, 0, '', '', '1606928367.'),
-(4, '5', 5, 5, 5, 0, 5, 'Software', 's', ''),
-(5, '', 0, 0, 0, 0, 0, '', '', '1607719675.'),
-(6, '3', 3, 3, 3, 0, 3, 'Software', '3', '1607719856.'),
-(7, '', 0, 0, 0, 0, 0, '', '', '1607722080.'),
-(8, '33', 33, 33, 33, 0, 33, 'Software', '33', '1607722210.'),
-(9, '', 0, 0, 0, 0, 0, '', '', '1607722376.'),
-(10, '', 0, 0, 0, 0, 0, '', '', '1607722423.'),
-(11, '', 0, 0, 0, 0, 0, '', '', ''),
-(12, '', 0, 0, 0, 0, 0, '', '', '1607722815.'),
-(13, '', 0, 0, 0, 0, 0, '', '', '1607959104.'),
-(14, '', 0, 0, 0, 0, 0, '', '', '1607959923.'),
-(15, '', 0, 0, 0, 0, 0, '', '', '1607959994.'),
-(16, '', 0, 0, 0, 0, 0, '', '', '1607960844.'),
-(17, 'Fasepi', 999, 5, 99, 669, 99, 'Hardware', '3', '1607961205.'),
-(18, '', 0, 0, 0, 0, 0, '', '', '1607961276.'),
-(19, '', 0, 0, 0, 0, 0, '', '', '1607961326.');
+(2, '', 0, 0, 0, 0, 0, '', '', '1608157797.');
 
 -- --------------------------------------------------------
 

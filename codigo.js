@@ -31,6 +31,7 @@ $(document).ready(function() {
   oportunidades();
   campanas();
   productost();
+  todospre();
   $('#task-result').hide();
   // Buscador
   $('#search').keyup(function() {
@@ -294,6 +295,61 @@ $(document).ready(function() {
       }
     });
   }
+
+    // Fetching Tasks
+    function todospre() {
+      $.ajax({
+        url: 'todospre.php',
+        type: 'GET',
+        success: function(response) {
+          const todospre = JSON.parse(response);
+          let template = '';
+          todospre.forEach(task => {
+            template += `
+                    <tr taskId="${task.id}">
+                   
+                    <td>
+                    <a href="#" class="task-item">
+                      ${task.nombre} 
+                    </a>
+                    </td>
+                    <td>
+                    <a href="#" class="task-item">
+                      ${task.apellido} 
+                    </a>
+                    </td>
+                    <td>${task.principal}</td>
+                    <td  >
+                    ${task.celular}
+                    </td>
+                    <td  >
+                    ${task.correop}
+                    </td>
+                    <td  >
+                    ${task.cargo}
+                    </td>
+                   
+                    <td >
+                    ${task.ciudad}
+                    </td>
+                    
+                    <td>
+                    ${task.empresa}
+                    </td>
+                    
+                
+                    <td>
+                      <button class="task-delete btn btn-danger">
+                       Eliminar 
+                      </button>
+                    </td>
+                    </tr>
+                  `
+          });
+          $('#todospre').html(template);
+        }
+      });
+    }
   // Get a Single Task by Id 
   $(document).on('click', '.task-item', (e) => {
     const element = $(this)[0].activeElement.parentElement.parentElement;
@@ -567,7 +623,16 @@ function producto() {
       });
     }
   });
-
+   //Cambiar estado precontacto
+   $(document).on('click', '.task-cambio', (e) => {
+    if(confirm('¿Estás seguro de que quieres Cambiarlo?')) {
+      const element = $(this)[0].activeElement.parentElement.parentElement;
+      const id = $(element).attr('taskId');
+      $.post('task-activa-todos.php', {id}, (response) => {
+        fetchTasks();
+      });
+    }
+  });
   // Lista pre contactos Index
   function pre() {
     $.ajax({
@@ -596,7 +661,17 @@ function producto() {
                   <td>${task.empresa}</td>
                   <td>${task.precontacto}</td>
                   <td>${task.fecha}</td>
-                 
+                  <td>
+                  <button class="task-cambio btn btn-primary">
+                  ${task.conver}
+                  </button>
+                </td>
+                  
+                  <td>
+                      <button class="task-ver btn btn-primary">
+                       ver
+                      </button>
+                    </td>
                   </tr>
                 `
         });
@@ -686,5 +761,44 @@ function producto() {
       }
     });
   }
+ 
+  $(document).ready(main);
+ 
+var contador = 1;
+ 
+function main(){
+	$('.menu_bar').click(function(){
+		// $('nav').toggle(); 
+ 
+		if(contador == 1){
+			$('nav').animate({
+				left: '0'
+			});
+			contador = 0;
+		} else {
+			contador = 1;
+			$('nav').animate({
+				left: '-100%'
+			});
+		}
+ 
+	});
+ 
+};
+
+
+$('ul.tabs li a:first').addClass('active');
+$('.secciones article').hide();
+$('.secciones article:first').show();
+
+$('ul.tabs li a').click(function(){
+  $('ul.tabs li a').removeClass('active');
+  $(this).addClass('active');
+  $('.secciones article').hide();
+
+    var activeTab = $(this).attr('href');
+    $(activeTab).show();
+    return false;
+  });
  // Fin del Código
 });

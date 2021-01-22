@@ -2,7 +2,7 @@
 include('database.php');
 $search = $_POST['search'];
 if(!empty($search)) {
-  $query = "SELECT * FROM precontacto WHERE nombre LIKE '$search%'";
+  $query = "SELECT * FROM precontacto WHERE nombre LIKE '$search%' OR apellido LIKE '$search%' OR cargo LIKE '$search%'";
   $result = mysqli_query($connection, $query);
   if(!$result) {
     die('Query Error' . mysqli_error($connection));

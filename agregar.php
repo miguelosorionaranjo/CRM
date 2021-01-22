@@ -24,7 +24,7 @@ if(isset($_POST['nombre'])) {
   $task_descripcion = $_POST['descripcion'];
   $task_fecha = $_POST['fecha'];
   $task_conver = $_POST['conver'];
-  $query = "INSERT into precontacto(gender, 
+  $query = "INSERT into precontacto (gender, 
                                     nombre, 
                                     apellido, 
                                     principal, 

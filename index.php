@@ -69,6 +69,190 @@ h6 {
     text-align: center;
 }
 
+
+* {
+	margin:0;
+	padding:0;
+}
+ 
+body {
+	background:#FFFFFA;
+}
+ 
+header {
+	width:100%;
+}
+ 
+header nav {
+	width:90%;
+	max-width:1000px;
+	margin:20px auto;
+	background:#024959;
+}
+ 
+.menu_bar {
+	display:none;
+}
+ 
+header nav ul {
+	overflow:hidden;
+	list-style:none;
+}
+ 
+header nav ul li {
+	float:left;
+}
+ 
+header nav ul li a {
+	color:#fff;
+	padding:20px;
+	display:block;
+	text-decoration:none;
+}
+ 
+header nav ul li span {
+	margin-right:10px;
+}
+ 
+header nav ul li a:hover {
+	background:#037E8C;
+}
+ 
+section {
+	padding:20px;
+}
+ 
+@media screen and (max-width:800px ) {
+	header nav {
+		width:80%;
+		height:100%;
+		left:-100%;
+		margin:0;
+		position: fixed;
+	}
+ 
+	header nav ul li {
+		display:block;
+		float:none;
+		border-bottom:1px solid rgba(255,255,255, .3);
+	}
+ 
+	.menu_bar {
+		display:block;
+		width:100%;
+		background:#ccc;
+	}
+ 
+	.menu_bar .bt-menu {
+		display:block;
+		padding:20px;
+		background:#024959;
+		color:#fff;
+		text-decoration:none;
+		font-weight: bold;
+		font-size:25px;
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+	}
+ 
+	.menu_bar span {
+		float:right;
+		font-size:40px;
+	}
+}
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body{
+  background: #D4D4D4;
+  font-family: 'Open sans';
+}
+
+.wrap{
+  width: 100%;
+  max-width: 90%;
+  margin: 0px auto;
+}
+
+ul.tabs{
+  width: 100%;
+  background: #363636;
+  list-style: none;
+  display: flex;
+}
+
+ul.tabs li{
+  width: 15%;
+}
+
+ul.tabs li a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+
+  display: block;
+  padding: 20px 0px;
+}
+
+.active{
+  background: #0984CC;
+}
+
+ul.tabs li a .tab-text{
+  margin-left: 8px;
+}
+
+.secciones{
+  width: 100%;
+  background: #fff;
+}
+
+.secciones article{
+  padding: 30px;
+}
+
+.secciones article p{
+  text-align: justify;
+}
+
+
+@media screen and (max-width: 700px){
+  ul.tabs li{
+    width: none;
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
+
+@media screen and (max-width: 450px){
+  ul.tabs li a{
+    padding: 15px 0px;
+  }
+
+  ul.tabs li a .tab-text{
+    display: none;
+  }
+
+  .secciones article{
+    padding: 20px;
+  }
+}
+.blanco{
+  color: white;
+}
+.negro{
+  color: black;
+}
       </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -86,6 +270,12 @@ h6 {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="estilos.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+
     <title>CRM</title>  
     <script>
 			
@@ -110,6 +300,7 @@ h6 {
     $fecha=date("Y-m-d ");
          ?>
 <!-- NAVIGATION  -->
+<!--
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
@@ -156,7 +347,7 @@ h6 {
 
     </div>
   </div>
-</nav>
+</nav> -->
 <!--
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
      
@@ -193,15 +384,8 @@ h6 {
     </nav>
     -->
 
-
-
-
-
-
-
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">CRM</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -218,12 +402,28 @@ h6 {
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
+         Agregar Registros
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#exampleModal"   data-toggle="modal">Nuevo Usuario</a>
+          <a class="dropdown-item" href="#exampleModal2" data-toggle="modal">Nueva Marca</a>
+          <a class="dropdown-item" href="#exampleModal3" data-toggle="modal">Nuevo Producto</a>
+          <a class="dropdown-item" href="#exampleModal5" data-toggle="modal">Nueva Campana</a>
+          <a class="dropdown-item" href="#exampleModal4" data-toggle="modal">Nuevo Pre-Contacto</a>
+          <a class="dropdown-item" href="#exampleModal6" data-toggle="modal">Nueva Oportunidad</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Listas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="#exampleModal7" data-toggle="modal">Listar Oportunidades</a>
+          <a class="dropdown-item" href="#exampleModal8" data-toggle="modal">Listar Campañas</a>
+          <a class="dropdown-item" href="#exampleModal9" data-toggle="modal">Listar Productos</a>
+          <a class="dropdown-item" href="#exampleModal99" data-toggle="modal">Listar Marcas</a>
+          <a class="dropdown-item" href="#exampleModal10" data-toggle="modal">Listar Pre-Contactos</a>
         </div>
       </li>
     </ul>
@@ -231,9 +431,23 @@ h6 {
 </nav>
 
 
-
-
-
+<!--
+<header>
+		<div class="menu_bar">
+			<a href="#" class="bt-menu"><span class="material-icons">&#xe235;</span>Menu</a>
+		</div>
+ 
+		<nav>
+			<ul>
+				<li><a href="#"><span class="material-icons">&#xE147;</span>Inicio</a></li>
+				<li><a href="#"><span class="icon-suitcase"></span>Trabajos</a></li>
+				<li><a href="#"><span class="icon-rocket"></span>Proyectos</a></li>
+				<li><a href="#"><span class="icon-earth"></span>Servicios</a></li>
+				<li><a href="#"><span class="icon-mail"></span>Contactos</a></li>
+			</ul>
+		</nav>
+	</header>
+-->
     <!-- Modal Selector -->
 <div id="myModal_selector" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -887,8 +1101,8 @@ $max = new DateTime();
       <div class="col-md-4 themed-grid-col" class="form-group">Convertir a Contacto:
         <select class="form-control" id="conver" required>
       <option value="">Opciones</option>
-      <option value="Si">Si.</option>
-      <option value="No">No.</option>
+      <option value="Contacto">Contacto</option>
+      <option value="Pre-contacto">Pre-Contacto</option>
     </select> 
       </div>
     </div>
@@ -1247,10 +1461,69 @@ $max = new DateTime();
 					</div>
       </div>
      
+     
     </div>
   </div>
 </div> 
 
+<!-- Modal Listar Todos los Pre-Contactos -->
+<div class="modal fade" id="exampleModal10"  tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="form-group">
+   <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header" >
+      <h4 class="modal-title">Lista de Pre-Contactos</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" width="200px" class="container">
+      
+
+<div class="container">
+       <div class="row">
+           <div class="col-lg-12">
+ <table id="todospre" class="table table-striped table-bordered" style="width:100%">
+              <thead class="tabla">
+                  <tr class="table-primary" class="tabla">
+                  
+        <td>Nombres</td>
+        <td>Apellidos</td>
+        <td >Teléfono </td>
+        <td >Celular</td>
+        <td>Correo</td>
+        <td>Cargo</td>
+        <td>Origen</td>
+        <td>Pais</td>
+       <!-- <td>Departamento</td>
+        <td>Ciudad</td>
+        <td>Página Web</td>
+        <td>Empresa</td>
+        <td>Industria</td>
+        <td>Dirección</td>
+        <td>Producto</td>
+        <td>Marca</td>
+        <td>Asignado</td>
+        <td>Pre-Contacto</td>
+        <td>Descripción</td>
+        <td>Fecha</td>
+        <td>Fecha Modificación</td>
+        <td>Estado</td>-->
+                  </tr>
+                </thead>
+                <tbody id="todospre"></tbody>
+    </table>
+</div>
+       </div> 
+    </div>
+
+          <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
+          </div>
+      </div>
+
+      </div>
+  </div>
+</div> 
      <!-- Body  -->
      <div style="height: 20px;"></div>
     <div class="container"  >
@@ -1258,13 +1531,177 @@ $max = new DateTime();
             <div class="col-lg-12">
 
             <div class="card shadow-lg p-3 mb-5 bg-white ">
-            <div align="right">
+            
+        <div class="card-body">
+
+
+
+
+        <div class="wrap">
+    <ul class="tabs">
+      <li><a href="#tab1"><span class="fa fa-user"></span><span class="tab-text">Pre-Contactos</span></a></li>
+      <li><a href="#tab2"><span class="fa fa-group"></span><span class="tab-text">Contactos</span></a></li>
+      <li><a href="#tab3"><span class="fa fa-briefcase"></span><span class="tab-text">Oportunidades</span></a></li>
+      <li><a href="#tab4"><span class="fa fa-bookmark"></span><span class="tab-text">Marca</span></a></li>
+      <li><a href="#tab5"><span class="fa fa-cubes"></span><span class="tab-text">Producto</span></a></li>
+      <li><a href="#tab6"><span class="fa fa-bullhorn"></span><span class="tab-text">Campaña</span></a></li>
+
+    </ul>
+<!--
+    <ul class="tabs">
+      <li><a href="#tab1"><span class="fa fa-home"></span><span class="tab-text">Inicio</span></a></li>
+      <li><a href="#tab2"><span class="fa fa-group"></span><span class="tab-text">Nosotros</span></a></li>
+      <li><a href="#tab3"><span class="fa fa-briefcase"></span><span class="tab-text">Servicios</span></a></li>
+      <li><a href="#tab4"><span class="fa fa-bookmark"></span><span class="tab-text">Blog</span></a></li>
+    </ul>
+-->
+
+<div class="float-right">
         <form class="form-inline my-2 my-lg-0">
             <input name="search" id="search" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
             <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
           </form>
           </div>
-        <div class="card-body">
+
+    <div class="secciones">
+      <article id="tab1">
+        <button class="btn btn-primary my-2 my-sm-0" href="#exampleModal4" data-toggle="modal"><span class="fa fa-user-plus"></span><span class="tab-text">Nuevo Pre-Contacto</button>
+
+        <button class="btn btn-primary my-2 my-sm-0" href="#exampleModal10" data-toggle="modal"><span class="fa fa-list"></span><span class="tab-text">Listar Pre-Contactos</button>
+        <br><br>
+        <div class="card">
+         <div class="card-body" >
+    
+
+              <table id="tablax" class="table table-striped table-bordered" style="width:100%">
+
+                                            <!--Pre- Contactos-->
+              <thead class="tabla">
+                  <tr class="table-primary" class="tabla">
+                    <td>Nombre </td>
+                    <td>Apellido</td>
+                    <td>Nombre Empresa</td>
+                    <td>Estado</td>
+                    <td>Fecha</td>
+                    <td>Cambiar estado</td>
+                  </tr>
+                </thead>
+                <tbody id="pre"></tbody>
+    </table>
+</div>
+      </div>
+      </article>
+                                            <!-- Contactos-->
+      <article id="tab2">
+        <button class="btn btn-primary my-2 my-sm-0" href="#exampleModal41" data-toggle="modal"><span class="fa fa-user-plus"></span><span class="tab-text">Nuevo Contacto</button><br><br>
+       <div class="card">
+      <div class="card-body">
+    
+              <table id="contactoss" class="table table-striped table-bordered" style="width:100%">
+              <thead class="tabla">
+                  <tr class="table-primary" class="tabla">
+                  
+                    <td>#</td>
+                    <td>Nombre </td>
+                    <td>Apellido</td>
+                    <td>Nombre Empresa</td>
+                    <td>Estado</td>
+                    <td>Fecha</td>
+                  </tr>
+                </thead>
+                <tbody id="tasks"></tbody>
+    </table>
+      </div>
+    </div>
+        </article>         
+                                  <!-- Oportunidades-->
+      <article id="tab3">
+
+        <button class="btn btn-primary my-2 my-sm-0" href="#exampleModal6" data-toggle="modal"><span class="fa fa-plus"></span><span class="tab-text">Nueva Oportunidad</button>
+       
+        <button class="btn btn-primary my-2 my-sm-0" href="#exampleModal7" data-toggle="modal"><span class="fa fa-list"></span><span class="tab-text">Listar Oportunidades</button>
+        <br><br>
+       <div class="card">
+      <div class="card-body">
+
+      <table class="tabla" class="table table-bordered table-sm" id="customers" id="tablax" align="left">
+                <thead class="tabla">
+                  <tr class="table-primary" class="tabla">
+                    
+                    <td>Nombre Oportunidad</td>
+                    <td>Nombre Organización</td>
+                    <td>Tipo </td>
+                  </tr>
+                </thead>
+                <tbody id="opor"></tbody>
+              </table> 
+      </div>
+    </div>
+      </article>
+                                       <!-- Marcas-->
+      <article id="tab4">
+        <button class="btn btn-primary my-2 my-sm-0" href="#exampleModal2" data-toggle="modal"><span class="fa fa-plus"></span><span class="tab-text">Nueva Marca</button><br><br>
+       <div class="card">
+      <div class="card-body">
+
+       <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
+                <thead class="tabla">
+                  <tr class="table-primary" class="tabla">
+                    <td>Nombre Marca</td>
+                    <td> Estado</td>
+                    <td> Opción</td>
+                  </tr>
+                </thead>
+                <tbody id="marca"></tbody>
+              </table> 
+      </div>
+    </div>
+      </article>
+                                       <!-- Productos-->
+      <article id="tab5">
+        <button class="btn btn-primary my-2 my-sm-0" href="#exampleModal3" data-toggle="modal"><span class="fa fa-plus"></span><span class="tab-text">Nuevo Producto</button><br><br>
+       <div class="card">
+      <div class="card-body">
+
+      <table class="tabla" class="table table-bordered table-sm" id="customers" align="left" >
+                <thead class="tabla">
+                  <tr class="table-primary" class="tabla">
+                    <td>Nombre Producto</td>
+                    <td> Código</td>
+                    <td>Total</td>
+                    <td>Cantidad</td>
+                    <td>Proveedor</td>
+                    <td>Imágen</td>
+                    <td> Opción</td>
+                  </tr>
+                </thead>
+                <tbody id="producto"></tbody>
+              </table> 
+      </div>
+    </div>
+      </article>
+                                       <!-- Campañas-->
+       <article id="tab6">
+         <button class="btn btn-primary my-2 my-sm-0" href="#exampleModal5" data-toggle="modal"><span class="fa fa-plus"></span><span class="tab-text">Nueva Campaña</button><br><br>
+       <div class="card">
+      <div class="card-body">
+
+       <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
+                <thead class="tabla">
+                  <tr class="table-primary" class="tabla">
+                    <td>Nombre Campaña</td>
+                    <td>Tipo</td>
+                    <td> Descripción</td>
+                    
+                  </tr>
+                </thead>
+                <tbody id="campanas"></tbody>
+              </table> 
+      </div>
+    </div>
+      </article>
+    </div>
+</div>
 
       <!--  <h1 class="display-1" align="center">Bienvenidos</h1>-->
 
@@ -1290,14 +1727,40 @@ $max = new DateTime();
 -->
 
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-sm-6">
     <div class="card">
-    <div class="card-header" align="center">
+    <div class="card-header" align="center" >
     Lista de Pre-Contactos
   </div>
       <div class="card-body">
     
+   Prueba datatable 
+      <table id="example1" class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Nombre</th>
+        <th>Rol</th>
+        <th >Estado </th>
+        <th >Acciones</th>
+    </tr>
+    </thead>
+  <tbody>
+   
+ 
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th >Estado </th>
+            <th >Acciones</th>
+          </tr>
+        </tfoot>
+      </table>
+     
               <table id="tablax" class="table table-striped table-bordered" style="width:100%">
               <thead class="tabla">
                   <tr class="table-primary" class="tabla">
@@ -1314,13 +1777,13 @@ $max = new DateTime();
     </table>
       </div>
     </div>
-  </div>
+  </div>-->
 
-   <!-- Modal Consulta Oportunidad-->
+   <!-- Modal Consulta Oportunidad
 <div id="myModal_consultaro" class="modal fade"  id="editar<?php echo $row['id_opor'];?>" role="dialog">
   <div class="modal-dialog">
 
-    <!-- Modal content-->
+ 
     <div class="modal-content">
     <div class="modal-header" >
       <h4 class="modal-title">Información Oportunidad</h4>
@@ -1371,8 +1834,8 @@ while($row = mysqli_fetch_array($result)) {
     </div>
 
   </div>
-</div>
-<!-- Lista de Contactos Index-->
+</div> -->
+<!-- Lista de Contactos Index
 <div class="col-sm-6">
     <div class="card">
     <div class="card-header" align="center">
@@ -1399,10 +1862,9 @@ while($row = mysqli_fetch_array($result)) {
   </div>
 </div>
 
+<br>-->
 
-<br>
-
-<!-- Lista Oportunidades Index-->
+<!-- Lista Oportunidades Index
 <div class="col-sm-6">
     <div class="card">
     <div class="card-header" align="center">
@@ -1423,8 +1885,8 @@ while($row = mysqli_fetch_array($result)) {
               </table> 
       </div>
     </div>
-  </div>
-  <!-- Lista Productos Index-->
+  </div>-->
+  <!-- Lista Productos Index
 <div class="col-sm-6">
     <div class="card">
     <div class="card-header" align="center">
@@ -1436,28 +1898,63 @@ while($row = mysqli_fetch_array($result)) {
       <div class="card-deck">
   <div class="card">
     <img class="imagen" class="card-img-top" src="imagenes/Logo1.jpg" alt="Card image cap" >
-    <div class="card-body">
-  <!--    <h5 class="card-title">Card title</h5> -->
+    <div class="card-body">-->
+  <!--    <h5 class="card-title">Card title</h5> 
      
     </div>
   </div>
   <div class="card">
     <img class="imagen" class="card-img-top" src="imagenes/Logo2.png" alt="Card image cap">
-    <div class="card-body">
-   <!--   <h5 class="card-title">Card title</h5> -->
+    <div class="card-body">-->
+   <!--   <h5 class="card-title">Card title</h5> 
      
     </div>
   </div>
   <div class="card">
     <img class="imagen" class="card-img-top" src="imagenes/Logo3.png" alt="Card image cap">
-    <div class="card-body">
+    <div class="card-body">-->
    <!--   <h5 class="card-title">Card title</h5> -->
       
     </div>
   </div>
 </div>
 
-   
+  
+
+      <script>
+$(document).ready(function() {
+    
+if ( $.fn.dataTable.isDataTable( '#example1' ) ) {
+table = $('#example1').DataTable( );
+ paging: true
+ responsive: true
+}
+else {
+table =  $('#example1').DataTable({
+  "language":{
+   "lengthMenu":"Mostrar _MENU_ registros por página.",
+   "zeroRecords": "Lo sentimos. No se encontraron registros.",
+         "info": "Mostrando página _PAGE_ de _PAGES_",
+         "infoEmpty": "No hay registros aún.",
+         "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+         "search" : "Búsqueda",
+         "LoadingRecords": "Cargando ...",
+         "Processing": "Procesando...",
+         "SearchPlaceholder": "Comience a teclear...",
+         "paginate": {
+ "previous": "Anterior",
+ "next": "Siguiente",
+ }
+  }
+
+
+ });
+}
+
+});
+</script>
+
+
       </div>
     </div>
   </div>
@@ -1467,12 +1964,12 @@ while($row = mysqli_fetch_array($result)) {
         </div>  
     </div>
             <!-- TABLE  -->
-            <div class="col-md-7" align="left">
+            <div class="col-md-12" >
               <div class="card my-3" id="task-result">
                 <div  class="card-body" id="customers">
                   <!-- SEARCH -->
                   <h1 align="center">Resultados de la Búsqueda</h1>
-                  <table  class="container" class="table table-bordered table-sm" id="customers" align="left">
+                  <table  class="container" class="table table-bordered table-sm" id="customers" >
                     <thead >
                       <tr class="table-primary" >
                         <td></td>
@@ -1487,36 +1984,9 @@ while($row = mysqli_fetch_array($result)) {
                 </div>
               </div>
 
-              <!--
-              <table class="tabla" class="table table-bordered table-sm" id="customers" align="left">
-                <thead class="tabla">
-                  <tr class="table-primary" class="tabla">
-                    <td>Id</td>
-                    <td>--</td>
-                    <td>Nombre</td>
-                    <td>Apellido</td>
-                    <td>Número Principal</td>
-                    <td>Número Celular</td>
-                    <td>Cargo</td>
-                    <td>Origen</td>
-                    <td>País</td>
-                    <td>Departamento</td>
-                    <td>Ciudad</td>
-                    <td>Página Web</td>
-                    <td>Empresa</td>
-                    <td>Industria</td>
-                    <td>Dirección</td>
-                    <td>Producto o Servicio</td>
-                    <td>Marca</td>
-                    <td>Asignado a:</td>
-                    <td>Estado</td>
-                    <td>Descripción</td>
-                    <td>Fecha Solicitud</td>
-                    <td>Fecha Modificación</td>
-                  </tr>
-                </thead>
-                <tbody id="tasks"></tbody>
-              </table> -->
+    
+
+
             </div>  
             </div> 
         </div>                  
@@ -1527,15 +1997,18 @@ while($row = mysqli_fetch_array($result)) {
     <script src="codigo.js"></script> 	 
 
         <!-- JQUERY -->
-        <script src="https://code.jquery.com/jquery-3.4.1.js"
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
         </script>
     <!-- DATATABLES -->
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
     </script>
  
     
-    </script>
+    
     <script>
         $(document).ready(function () {
             $('#tablax').DataTable({
@@ -1626,5 +2099,7 @@ while($row = mysqli_fetch_array($result)) {
             });
         });
     </script>
+
+
   </body>
 </html>
